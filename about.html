@@ -15,6 +15,9 @@
     .feature-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: .75rem; background: #f1f5ff; color: #0d6efd; }
     .stats-band { background: linear-gradient(90deg, #0d6efd, #3a7bff); color: #fff; border-radius: 1rem; }
     .stat h3 { margin: 0; font-weight: 800; }
+    .section-lead { max-width: 60ch; }
+    .mv-card { border: 1px solid rgba(0,0,0,.08); border-radius: .75rem; padding: 1rem; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.03); }
+    .mv-badge { font-size: .75rem; letter-spacing: .04em; }
   </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navLinks">
@@ -47,25 +50,27 @@
       </div>
     </section>
 
-    <!-- Crisp details with pictures -->
+    <!-- Trust / Intro split -->
     <section class="mb-5">
       <div class="row g-4 align-items-center">
         <div class="col-12 col-lg-6" data-aos="fade-right">
-          <img class="about-photo" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1400&auto=format&fit=crop" alt="Technician repairing phone">
+          <img class="about-photo" src="https://images.unsplash.com/photo-1566728595333-75a1d7cae961?q=80&w=1600&auto=format&fit=crop" alt="Technician repairing phone on workbench">
         </div>
         <div class="col-12 col-lg-6" data-aos="fade-left">
+          <h2 class="h4 mb-3">Why customers trust us</h2>
+          <p class="text-secondary section-lead mb-4">From quick diagnostics to quality parts and friendly support, we make device repair simple, fast, and dependable.</p>
           <div class="d-flex flex-column gap-3">
             <div class="note-card">
               <h6><i class="bi bi-shield-check me-2 text-primary"></i>Genuine Parts, Trusted Warranty</h6>
-              <p>We source certified components and back our work with a solid warranty for your peace of mind.</p>
+              <p>Certified components and a solid warranty for peace of mind.</p>
             </div>
             <div class="note-card">
               <h6><i class="bi bi-lightning-charge me-2 text-warning"></i>Same‑day Turnaround</h6>
-              <p>Most common repairs are completed within hours — no long waits, no hassle.</p>
+              <p>Most common repairs completed within hours — no long waits.</p>
             </div>
             <div class="note-card">
               <h6><i class="bi bi-people me-2 text-success"></i>Friendly, Expert Support</h6>
-              <p>Real people ready to help with pricing, diagnostics, and personalized recommendations.</p>
+              <p>Real people to help with pricing, diagnostics, and recommendations.</p>
             </div>
           </div>
         </div>
@@ -101,6 +106,32 @@
               <small class="text-secondary">No surprises — transparent quotes before we start.</small>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision split -->
+    <section class="mb-5">
+      <div class="row g-4 align-items-center">
+        <div class="col-12 col-lg-6 order-2 order-lg-1" data-aos="fade-right">
+          <h2 class="h4 mb-3">Our Mission & Vision</h2>
+          <div class="row g-3">
+            <div class="col-12">
+              <div class="mv-card h-100">
+                <span class="badge bg-primary-subtle text-primary mv-badge mb-2">Mission</span>
+                <p class="mb-0 text-secondary">Deliver reliable, fast, and fair device repairs that extend the life of your tech and reduce e‑waste.</p>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="mv-card h-100">
+                <span class="badge bg-success-subtle text-success mv-badge mb-2">Vision</span>
+                <p class="mb-0 text-secondary">Be the most trusted repair partner in every neighborhood, known for quality, transparency, and care.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+          <img class="about-photo" src="https://cyberttp.com/storage/2024/03/IT-Help-Desk-1.jpg" alt="Technician desk with phones and tools">
         </div>
       </div>
     </section>

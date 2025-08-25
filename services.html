@@ -189,6 +189,67 @@
         <a href="contact.html" class="btn btn-outline-secondary btn-sm">Ask for Accessories</a>
       </div>
     </div>
+
+    <!-- Inline Booking Form (moved from index.html) -->
+    <section id="book-service" class="mb-4" data-aos="fade-up">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title mb-2">Book a Service</h5>
+          <p class="text-secondary">Fill in your details and we will confirm your booking.</p>
+
+          <div id="statusAlert" class="alert alert-info d-none" role="alert"></div>
+
+          <form id="bookingForm" novalidate>
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <label for="cust_name" class="form-label">Your Name</label>
+                <input id="cust_name" type="text" name="name" class="form-control" placeholder="Jane Doe" required>
+                <div class="invalid-feedback">Please enter your name.</div>
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="cust_email" class="form-label">Your Email</label>
+                <input id="cust_email" type="email" name="email" class="form-control" placeholder="jane@example.com" required>
+                <div class="invalid-feedback">Please enter a valid email.</div>
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="service" class="form-label">Select Service</label>
+                <select id="service" name="service" class="form-select" required>
+                  <option value="" selected disabled>Choose a service</option>
+                  <option>Screen Replacement</option>
+                  <option>Battery Service</option>
+                  <option>Water Damage Repair</option>
+                  <option>Data Recovery</option>
+                  <option>Software Support</option>
+                  <option>Accessory Installations</option>
+                </select>
+                <div class="invalid-feedback">Please select a service.</div>
+              </div>
+              <div class="col-6 col-md-3">
+                <label for="date" class="form-label">Preferred Date</label>
+                <input id="date" type="date" name="date" class="form-control" required>
+                <div class="invalid-feedback">Please choose a date.</div>
+              </div>
+              <div class="col-6 col-md-3">
+                <label for="time" class="form-label">Preferred Time</label>
+                <input id="time" type="time" name="time" class="form-control" required>
+                <div class="invalid-feedback">Please choose a time.</div>
+              </div>
+              <div class="col-12">
+                <label for="notes" class="form-label">Notes (optional)</label>
+                <textarea id="notes" name="notes" class="form-control" rows="3" placeholder="Anything else we should know?"></textarea>
+              </div>
+            </div>
+
+            <div class="mt-3 d-flex gap-2">
+              <button id="submitBtn" type="submit" class="btn btn-primary">
+                <span class="btn-text">Confirm Booking</span>
+              </button>
+              <button type="reset" class="btn btn-outline-secondary">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Booking Modal -->
@@ -296,6 +357,8 @@
       });
     });
 
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvgbpypl';
+
     document.getElementById('bk_submit').addEventListener('click', async () => {
       resetBookingStatus();
       if (!validateBooking()) { showBookingStatus('Please fill in all required fields correctly.', 'danger'); return; }
@@ -309,10 +372,24 @@
         time: bookingForm.time.value,
       };
       try {
-        await new Promise(r => setTimeout(r, 700));
-        console.table(payload);
-        showBookingStatus('Booking received! We will contact you to confirm the slot.', 'success');
-        setTimeout(()=>{ bookingModal.hide(); bookingForm.reset(); }, 900);
+        const resp = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (resp.ok) {
+          showBookingStatus('Booking sent! We will contact you to confirm the slot.', 'success');
+          setTimeout(()=>{ bookingModal.hide(); bookingForm.reset(); }, 900);
+        } else {
+          let msg = 'Failed to send booking. Please try again later.';
+          try{
+            const data = await resp.json();
+            if (data && data.errors && data.errors.length) {
+              msg = data.errors.map(e => e.message).join(', ');
+            }
+          }catch(_){ /* ignore JSON parse errors */ }
+          showBookingStatus(msg, 'danger');
+        }
       } catch(err){
         console.error(err);
         showBookingStatus('Something went wrong. Please try again.', 'danger');
@@ -320,6 +397,61 @@
         bookingSubmit.disabled = false;
         bookingSubmit.textContent = 'Submit Booking';
       }
+    });
+
+    // Helper for inline form alerts
+    function toggleAlert(el, message = '', type = 'info'){
+      el.className = `alert alert-${type}`;
+      el.textContent = message;
+      if(message){ el.classList.remove('d-none'); } else { el.classList.add('d-none'); }
+    }
+
+    // Inline Booking Form (frontend demo behavior)
+    const inlineForm = document.getElementById('bookingForm');
+    const inlineAlertBox = document.getElementById('statusAlert');
+    const inlineSubmitBtn = document.getElementById('submitBtn');
+    const inlineBtnText = inlineSubmitBtn?.querySelector('.btn-text');
+
+    function setInlineLoading(loading){
+      if(!inlineSubmitBtn || !inlineBtnText) return;
+      if(loading){
+        inlineSubmitBtn.disabled = true;
+        inlineBtnText.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Sending...';
+      } else {
+        inlineSubmitBtn.disabled = false;
+        inlineBtnText.textContent = 'Confirm Booking';
+      }
+    }
+
+    function validateInlineForm(frm){
+      let valid = true;
+      Array.from(frm.elements).forEach(el => {
+        if(el.hasAttribute('required') && !String(el.value || '').trim()){
+          el.classList.add('is-invalid');
+          valid = false;
+        } else {
+          el.classList.remove('is-invalid');
+        }
+      });
+      return valid;
+    }
+
+    inlineForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      toggleAlert(inlineAlertBox, '');
+      if(!validateInlineForm(inlineForm)) { toggleAlert(inlineAlertBox, 'Please fill in all required fields correctly.', 'danger'); return; }
+      const fd = new FormData(inlineForm);
+      const data = Object.fromEntries(fd.entries());
+      try{
+        setInlineLoading(true);
+        await new Promise(r => setTimeout(r, 600)); // simulate submit
+        console.table(data);
+        toggleAlert(inlineAlertBox, 'Booking received! We will contact you to confirm the slot.', 'success');
+        inlineForm.reset();
+      }catch(err){
+        console.error(err);
+        toggleAlert(inlineAlertBox, 'Something went wrong. Please try again.', 'danger');
+      }finally{ setInlineLoading(false); }
     });
   </script>
  </body>

@@ -42,7 +42,7 @@
       </div>
       <div class="col-12 col-lg-6" data-aos="fade-left">
         <div class="border rounded p-4 h-100">
-          <form id="contactForm" action="https://formsubmit.co/localmarket17@gmail.com" method="POST" novalidate>
+          <form id="contactForm" novalidate>
             <!-- FormSubmit helpers -->
             <input type="hidden" name="_subject" value="New Contact Submission - Mobile Services">
             <input type="hidden" name="_template" value="table">
@@ -92,7 +92,68 @@
   <script>
     AOS.init({ duration: 650, once: true });
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Using native form POST to FormSubmit; no JS interception required
+
+    // Contact form (Formspree)
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mdklnvkb';
+    const contactForm = document.getElementById('contactForm');
+    const contactStatus = document.getElementById('contactStatus');
+    const contactSubmit = document.getElementById('contactSubmit');
+    const contactBtnText = contactSubmit?.querySelector('.contact-btn-text');
+
+    function toggleAlert(el, message = '', type = 'info'){
+      el.className = `alert alert-${type}`;
+      el.textContent = message;
+      if(message){ el.classList.remove('d-none'); } else { el.classList.add('d-none'); }
+    }
+
+    function setContactLoading(loading){
+      if(!contactSubmit || !contactBtnText) return;
+      if(loading){
+        contactSubmit.disabled = true;
+        contactBtnText.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Sending...';
+      } else {
+        contactSubmit.disabled = false;
+        contactBtnText.textContent = 'Send Message';
+      }
+    }
+
+    function validateContactForm(frm){
+      let valid = true;
+      Array.from(frm.elements).forEach(el => {
+        if(el.hasAttribute('required') && !String(el.value || '').trim()){
+          el.classList.add('is-invalid');
+          valid = false;
+        } else {
+          el.classList.remove('is-invalid');
+        }
+      });
+      return valid;
+    }
+
+    contactForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      toggleAlert(contactStatus, '');
+      if(!validateContactForm(contactForm)) { toggleAlert(contactStatus, 'Please fill in all required fields correctly.', 'danger'); return; }
+      const fd = new FormData(contactForm);
+      const payload = Object.fromEntries(fd.entries());
+      try{
+        setContactLoading(true);
+        const resp = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept':'application/json', 'Content-Type':'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if(resp.ok){
+          toggleAlert(contactStatus, 'Message sent! We will reply to you soon.', 'success');
+          contactForm.reset();
+        } else {
+          toggleAlert(contactStatus, 'Failed to send message. Please try again later.', 'danger');
+        }
+      } catch(err){
+        console.error(err);
+        toggleAlert(contactStatus, 'Network error. Please check your connection and try again.', 'danger');
+      } finally { setContactLoading(false); }
+    });
   </script>
 </body>
 </html>
