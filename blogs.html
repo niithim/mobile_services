@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blogs - Mobile Services</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* Hero banner */
+    .hero-banner { position: relative; min-height: 42vh; border-radius: 1rem; overflow: hidden; background: url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat; }
+    .hero-banner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.5)); }
+    .hero-content { position: relative; z-index: 1; color: #fff; padding: 3.5rem 2rem; }
+
+    /* Category pills */
+    .category-pill { border: 1px solid rgba(0,0,0,.08); border-radius: 999px; padding: .5rem 1rem; background: #fff; color: #111; font-weight: 600; transition: .2s ease; }
+    .category-pill:hover, .category-pill.active { background: #0d6efd; color: #fff; border-color: #0d6efd; text-decoration: none; }
+
+    /* Blog card */
+    .blog-card { border: 1px solid rgba(0,0,0,.08); border-radius: .75rem; overflow: hidden; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.03); height: 100%; }
+    .blog-card img { width: 100%; height: 180px; object-fit: cover; }
+    .blog-card .content { padding: 1rem; }
+    .blog-card .meta { font-size: .85rem; color: #6c757d; }
+    .blog-card .badge-cat { background: #f1f5ff; color: #0d6efd; }
+
+    /* Newsletter */
+    .newsletter { background: linear-gradient(135deg, #0d6efd, #5a9bff); color: #fff; border-radius: 1rem; }
+    .newsletter .form-control { border: none; }
+    .newsletter .form-control:focus { box-shadow: none; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Mobile Services</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="repairs.html">Repairs</a></li>
+          <li class="nav-item"><a class="nav-link active" href="blogs.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <!-- Hero Banner -->
+    <section class="hero-banner mb-5" data-aos="fade-up">
+      <div class="hero-content d-flex flex-column align-items-start justify-content-end h-100">
+        <h1 class="display-6 fw-bold mb-2">Tips, Guides & News</h1>
+        <p class="mb-0">Learn how to care for your devices, understand common issues, and stay updated with the latest mobile tech.</p>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="mb-4" data-aos="fade-up" data-aos-delay="50">
+      <div class="d-flex flex-wrap gap-2">
+        <a href="#" class="category-pill active">All</a>
+        <a href="#" class="category-pill">Battery</a>
+        <a href="#" class="category-pill">Screen</a>
+        <a href="#" class="category-pill">Water Damage</a>
+        <a href="#" class="category-pill">Data & Backup</a>
+        <a href="#" class="category-pill">Buying Guides</a>
+      </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="row g-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="blog-card h-100">
+          <img src="https://images.unsplash.com/photo-1510552776732-01acc9a4c839?q=80&w=1974&auto=format&fit=crop" alt="Battery tips">
+          <div class="content">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="badge badge-cat">Battery</span>
+              <small class="meta">2 min read</small>
+            </div>
+            <h6 class="mb-1">5 Tips to Extend Your Phone Battery Life</h6>
+            <p class="text-secondary mb-3">Simple steps to reduce battery drain, optimize charging, and get more from every cycle.</p>
+            <a href="https://www.wikihow.com/Make-Your-Cell-Phone-Battery-Last-Longer" class="btn btn-sm btn-outline-primary">Read more</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="blog-card h-100">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=2070&auto=format&fit=crop" alt="Screen protection">
+          <div class="content">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="badge badge-cat">Screen</span>
+              <small class="meta">3 min read</small>
+            </div>
+            <h6 class="mb-1">How to Protect Your Screen</h6>
+            <p class="text-secondary mb-3">From tempered glass to protective cases—best practices to keep your display safe.</p>
+            <a href="https://www.sciencealert.com/theres-a-simple-solution-to-protect-your-eyes-from-screens" class="btn btn-sm btn-outline-primary">Read more</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="blog-card h-100">
+          <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=2069&auto=format&fit=crop" alt="Water damage recovery">
+          <div class="content">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="badge badge-cat">Water Damage</span>
+              <small class="meta">4 min read</small>
+            </div>
+            <h6 class="mb-1">Recovering Data After Water Damage</h6>
+            <p class="text-secondary mb-3">Immediate steps to take, what to avoid, and professional options to restore your data.</p>
+            <a href="https://www.coolmuster.com/android/recover-data-from-water-damaged-android.html" class="btn btn-sm btn-outline-primary">Read more</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="blog-card h-100">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=2070&auto=format&fit=crop" alt="Cleaning ports">
+          <div class="content">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="badge badge-cat">Care</span>
+              <small class="meta">2 min read</small>
+            </div>
+            <h6 class="mb-1">Safely Cleaning Charging Ports</h6>
+            <p class="text-secondary mb-3">A quick guide to removing lint and debris without damaging your connectors.</p>
+            <a href="https://cleanhomeblog.com/how-to-safely-and-effectively-clean-a-charging-port/" class="btn btn-sm btn-outline-primary">Read more</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="blog-card h-100">
+          <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?q=80&w=2069&auto=format&fit=crop" alt="iOS vs Android">
+          <div class="content">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="badge badge-cat">Buying Guides</span>
+              <small class="meta">5 min read</small>
+            </div>
+            <h6 class="mb-1">iOS vs Android: Which is Right for You?</h6>
+            <p class="text-secondary mb-3">A balanced comparison of features, ecosystem, and longevity to help you decide.</p>
+            <a href="https://www.nytimes.com/wirecutter/reviews/ios-vs-android/" class="btn btn-sm btn-outline-primary">Read more</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <article class="blog-card h-100">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1974&auto=format&fit=crop" alt="Backup tips">
+          <div class="content">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="badge badge-cat">Data & Backup</span>
+              <small class="meta">3 min read</small>
+            </div>
+            <h6 class="mb-1">Essential Backup Tips Before Repair</h6>
+            <p class="text-secondary mb-3">Avoid data loss by following this simple pre-repair checklist for backups.</p>
+            <a href="https://fixermanme.com/blog/how-to-back-up-your-data-before-any-tech-repair/" class="btn btn-sm btn-outline-primary">Read more</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-center mt-4" data-aos="fade-up" data-aos-delay="150">
+      <nav aria-label="Blog pagination">
+        <ul class="pagination mb-0">
+          <li class="page-item disabled"><a class="page-link">Previous</a></li>
+          <li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Newsletter CTA -->
+    <section class="newsletter p-4 p-md-5 mt-5" data-aos="fade-up" data-aos-delay="200">
+      <div class="row align-items-center g-3">
+        <div class="col-md-6">
+          <h2 class="h4 fw-bold mb-2">Get the latest tips in your inbox</h2>
+          <p class="mb-0 text-white-50">Subscribe for monthly guides on device care, upgrades, and repair advice.</p>
+        </div>
+        <div class="col-md-6">
+          <form class="d-flex gap-2 flex-column flex-sm-row" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+            <input type="email" required class="form-control form-control-lg" placeholder="Your email address">
+            <button class="btn btn-dark btn-lg" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4 mt-4 border-top">
+    <div class="container d-flex justify-content-between align-items-center">
+      <small> 2024 Mobile Services</small>
+      <div class="d-flex gap-3">
+        <a href="#" class="text-secondary"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="text-secondary"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="text-secondary"><i class="bi bi-twitter-x"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script> AOS.init({ duration: 650, once: true }); document.getElementById('year').textContent = new Date().getFullYear(); </script>
+</body>
+</html>

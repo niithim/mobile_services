@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repairs - Mobile Services</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .brand-pill { border: 1px solid rgba(0,0,0,.08); border-radius: 999px; padding: .5rem 1rem; background: #fff; color: #0d6efd; font-weight: 600; }
+    .brand-pill.active, .brand-pill:hover { background: #0d6efd; color: #fff; }
+    .repair-card { border: 1px solid rgba(0,0,0,.08); border-radius: .75rem; overflow: hidden; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.03); }
+    .repair-card img { width: 100%; height: 150px; object-fit: cover; }
+    .repair-card .content { padding: .9rem; }
+    .badge-time { background: #f1f5ff; color: #0d6efd; }
+    .price { font-weight: 800; letter-spacing: -0.02em; }
+    /* Hero */
+    .hero-banner { position: relative; border-radius: 1rem; overflow: hidden; background: #0d6efd; color: #fff; }
+    .hero-banner .bg-cover { position: absolute; inset: 0; background:url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; opacity: .25; }
+    .hero-banner .inner { position: relative; padding: 3rem 1.25rem; }
+    @media(min-width:768px){ .hero-banner .inner{ padding: 4rem 3rem;} }
+    /* Quick Check */
+    .quick-check .result { border: 1px dashed rgba(13,110,253,.35); border-radius: .75rem; padding: 1rem; background: #f8fbff; }
+    /* Icon list */
+    .feature { border: 1px solid rgba(0,0,0,.08); border-radius: .75rem; background: #fff; padding: 1rem; }
+    /* Testimonials */
+    .testimonial { border: 1px solid rgba(0,0,0,.08); border-radius: .75rem; background: #fff; padding: 1rem; }
+    /* Pricing */
+    .pricing-table th, .pricing-table td { vertical-align: middle; }
+    /* Map */
+    .map-embed { width: 100%; height: 260px; border: 0; border-radius: .75rem; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Mobile Services</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="repairs.html">Repairs</a></li>
+          <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <!-- Hero Section -->
+    <section class="hero-banner mb-4" data-aos="fade-up">
+      <div class="bg-cover" aria-hidden="true"></div>
+      <div class="inner text-center">
+        <h1 class="display-6 fw-bold mb-2">Fast & Reliable Mobile Repair Service</h1>
+        <p class="lead mb-3">We fix all brands – Same Day Service</p>
+        <a href="#booking" class="btn btn-light btn-lg"><i class="bi bi-tools me-1"></i> Book Repair Now</a>
+      </div>
+    </section>
+
+    <!-- Quick Check -->
+    <section class="quick-check mb-4" data-aos="fade-up">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="h5 mb-3">Quick Estimate</h2>
+          <div class="row g-3 align-items-end">
+            <div class="col-12 col-md-3">
+              <label class="form-label" for="qcBrand">Brand</label>
+              <select id="qcBrand" class="form-select" required>
+                <option value="" selected disabled>Select brand</option>
+                <option>Apple</option>
+                <option>Samsung</option>
+                <option>OnePlus</option>
+                <option>Xiaomi</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-3">
+              <label class="form-label" for="qcModel">Model</label>
+              <input id="qcModel" class="form-control" required placeholder="e.g., iPhone 13, Galaxy S22" />
+            </div>
+            <div class="col-12 col-md-3">
+              <label class="form-label" for="qcIssue">Issue</label>
+              <select id="qcIssue" class="form-select" required>
+                <option value="" selected disabled>Select issue</option>
+                <option>Screen Replacement</option>
+                <option>Battery Replacement</option>
+                <option>Charging Port Repair</option>
+                <option>Speaker/Mic Issue</option>
+                <option>Camera Replacement</option>
+                <option>Water Damage</option>
+                <option>Software Issues</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-3 d-grid">
+              <button id="qcCheck" class="btn btn-primary"><i class="bi bi-zoom-in me-1"></i> Check Estimate</button>
+            </div>
+          </div>
+          <div id="qcResult" class="result mt-3 d-none">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+              <div>
+                <div class="small text-secondary">Estimated Price</div>
+                <div class="h5 mb-0" id="qcPrice">—</div>
+              </div>
+              <div>
+                <div class="small text-secondary">Time Required</div>
+                <div class="h5 mb-0" id="qcTime">—</div>
+              </div>
+              <a class="btn btn-outline-primary" href="#booking">Proceed to Book</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Categories -->
+    <section class="mb-4" data-aos="fade-up">
+      <h2 class="h5 mb-3">Common Repair Services</h2>
+      <div class="row g-3 row-cols-1 row-cols-md-4">
+        <div class="col"><a class="feature d-block text-decoration-none h-100" href="#tab-apple"><i class="bi bi-phone text-primary fs-4"></i> <strong class="d-block mt-2">Screen Replacement</strong><small class="text-secondary">Cracked or unresponsive screens.</small></a></div>
+        <div class="col"><a class="feature d-block text-decoration-none h-100" href="#tab-samsung"><i class="bi bi-battery-half text-primary fs-4"></i> <strong class="d-block mt-2">Battery Replacement</strong><small class="text-secondary">Fast draining or swollen battery.</small></a></div>
+        <div class="col"><a class="feature d-block text-decoration-none h-100" href="#tab-oneplus"><i class="bi bi-usb-plug text-primary fs-4"></i> <strong class="d-block mt-2">Charging Port</strong><small class="text-secondary">Not charging or loose port.</small></a></div>
+        <div class="col"><a class="feature d-block text-decoration-none h-100" href="#tab-xiaomi"><i class="bi bi-droplet text-primary fs-4"></i> <strong class="d-block mt-2">Water Damage</strong><small class="text-secondary">Liquid exposure recovery.</small></a></div>
+      </div>
+    </section>
+
+    <!-- Brand selector -->
+    <section class="mb-4">
+      <div class="d-flex flex-wrap gap-2" role="tablist" data-aos="fade-up">
+        <button class="brand-pill active" id="pill-samsung" data-bs-toggle="pill" data-bs-target="#tab-samsung" type="button" role="tab" aria-controls="tab-samsung" aria-selected="true"><i class="bi bi-phone me-1"></i> Samsung</button>
+        <button class="brand-pill" id="pill-apple" data-bs-toggle="pill" data-bs-target="#tab-apple" type="button" role="tab" aria-controls="tab-apple" aria-selected="false"><i class="bi bi-apple me-1"></i> Apple</button>
+        <button class="brand-pill" id="pill-oneplus" data-bs-toggle="pill" data-bs-target="#tab-oneplus" type="button" role="tab" aria-controls="tab-oneplus" aria-selected="false"><i class="bi bi-phone-fill me-1"></i> OnePlus</button>
+        <button class="brand-pill" id="pill-xiaomi" data-bs-toggle="pill" data-bs-target="#tab-xiaomi" type="button" role="tab" aria-controls="tab-xiaomi" aria-selected="false"><i class="bi bi-phone-landscape me-1"></i> Xiaomi</button>
+      </div>
+    </section>
+
+    <!-- Brand tabs -->
+    <section class="tab-content">
+      <!-- Samsung -->
+      <div class="tab-pane fade show active" id="tab-samsung" role="tabpanel" aria-labelledby="pill-samsung">
+        <div class="row g-3" data-aos="fade-up">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="repair-card h-100">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Samsung screen repair">
+              <div class="content">
+                <h6 class="mb-1">Screen Replacement</h6>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="badge badge-time">~2 hrs</span>
+                  <span class="price">₹3,499+</span>
+                </div>
+                <small class="text-secondary d-block mt-1">Genuine AMOLED panels for Galaxy series.</small>
+                <div class="mt-2"><a class="btn btn-sm btn-primary" href="contact.html">Book Now</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="repair-card h-100">
+              <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="Samsung battery service">
+              <div class="content">
+                <h6 class="mb-1">Battery Service</h6>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="badge badge-time">~1 hr</span>
+                  <span class="price">₹1,999+</span>
+                </div>
+                <small class="text-secondary d-block mt-1">High-capacity OEM batteries, calibration included.</small>
+                <div class="mt-2"><a class="btn btn-sm btn-primary" href="contact.html">Book Now</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="repair-card h-100">
+              <img src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=1200&auto=format&fit=crop" alt="Samsung water damage">
+              <div class="content">
+                <h6 class="mb-1">Water Damage Recovery</h6>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="badge badge-time">~4 hrs</span>
+                  <span class="price">₹2,999+</span>
+                </div>
+                <small class="text-secondary d-block mt-1">Board-level cleaning and component testing.</small>
+                <div class="mt-2"><a class="btn btn-sm btn-primary" href="contact.html">Book Now</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apple -->
+      <div class="tab-pane fade" id="tab-apple" role="tabpanel" aria-labelledby="pill-apple">
+        <div class="row g-3" data-aos="fade-up">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="repair-card h-100">
+              <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" alt="iPhone screen">
+              <div class="content">
+                <h6 class="mb-1">Screen Replacement</h6>
+                <div class="d-flex justify-content-between align-items-center"><span class="badge badge-time">~2 hrs</span><span class="price">₹4,499+</span></div>
+                <small class="text-secondary d-block mt-1">Retina-quality panels with True Tone retention.</small>
+                <div class="mt-2"><a class="btn btn-sm btn-primary" href="contact.html">Book Now</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="repair-card h-100">
+              <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="iPhone battery">
+              <div class="content">
+                <h6 class="mb-1">Battery Service</h6>
+                <div class="d-flex justify-content-between align-items-center"><span class="badge badge-time">~1 hr</span><span class="price">₹2,999+</span></div>
+                <small class="text-secondary d-block mt-1">Health diagnostics and cycle calibration.</small>
+                <div class="mt-2"><a class="btn btn-sm btn-primary" href="contact.html">Book Now</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="repair-card h-100">
+              <img src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=1200&auto=format&fit=crop" alt="iPhone back glass">
+              <div class="content">
+                <h6 class="mb-1">Back Glass Replacement</h6>
+                <div class="d-flex justify-content-between align-items-center"><span class="badge badge-time">~3 hrs</span><span class="price">₹3,499+</span></div>
+                <small class="text-secondary d-block mt-1">Precision separation and laser bonding.</small>
+                <div class="mt-2"><a class="btn btn-sm btn-primary" href="contact.html">Book Now</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OnePlus -->
+      <div class="tab-pane fade" id="tab-oneplus" role="tabpanel" aria-labelledby="pill-oneplus">
+        <div class="row g-3" data-aos="fade-up">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="repair-card h-100">
+              <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" alt="OnePlus screen">
+              <div class="content">
+                <h6 class="mb-1">Screen Replacement</h6>
+                <div class="d-flex justify-content-between align-items-center"><span class="badge badge-time">~2 hrs</span><span class="price">₹3,299+</span></div>
+                <small class="text-secondary d-block mt-1">Fluid AMOLED, color-calibrated displays.</small>
+                <div class="mt-2"><a class="btn btn-sm btn-primary" href="contact.html">Book Now</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="repair-card h-100">
+              <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="OnePlus charging port">
+              <div class="content">
+                <h6 class="mb-1">Charging Port Repair</h6>
+                <div class="d-flex justify-content-between align-items-center"><span class="badge badge-time">~1.5 hrs</span><span class="price">₹1,799+</span></div>
+                <small class="text-secondary d-block mt-1">Connector replacement and cleaning.</small>
+                <div class="mt-2"><a class="btn btn-sm btn-primary" href="contact.html">Book Now</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="repair-card h-100">
+              <img src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=1200&auto=format&fit=crop" alt="OnePlus camera">
+              <div class="content">
+                <h6 class="mb-1">Camera Module</h6>
+                <div class="d-flex justify-content-between align-items-center"><span class="badge badge-time">~2 hrs</span><span class="price">₹2,299+</span></div>
+                <small class="text-secondary d-block mt-1">Rear/front camera module replacement.</small>
+                <div class="mt-2"><a class="btn btn-sm btn-primary" href="contact.html">Book Now</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Xiaomi -->
+      <div class="tab-pane fade" id="tab-xiaomi" role="tabpanel" aria-labelledby="pill-xiaomi">
+        <div class="row g-3" data-aos="fade-up">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="repair-card h-100">
+              <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" alt="Xiaomi screen">
+              <div class="content">
+                <h6 class="mb-1">Screen Replacement</h6>
+                <div class="d-flex justify-content-between align-items-center"><span class="badge badge-time">~2 hrs</span><span class="price">₹2,499+</span></div>
+                <small class="text-secondary d-block mt-1">High-brightness LCD/AMOLED options.</small>
+                <div class="mt-2"><a class="btn btn-sm btn-primary" href="contact.html">Book Now</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="repair-card h-100">
+              <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="Xiaomi battery">
+              <div class="content">
+                <h6 class="mb-1">Battery Service</h6>
+                <div class="d-flex justify-content-between align-items-center"><span class="badge badge-time">~1 hr</span><span class="price">₹1,499+</span></div>
+                <small class="text-secondary d-block mt-1">OEM-grade cells with warranty.</small>
+                <div class="mt-2"><a class="btn btn-sm btn-primary" href="contact.html">Book Now</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="repair-card h-100">
+              <img src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=1200&auto=format&fit=crop" alt="Xiaomi speaker">
+              <div class="content">
+                <h6 class="mb-1">Speaker & Mic</h6>
+                <div class="d-flex justify-content-between align-items-center"><span class="badge badge-time">~1 hr</span><span class="price">₹1,199+</span></div>
+                <small class="text-secondary d-block mt-1">Audio diagnostics and part swap.</small>
+                <div class="mt-2"><a class="btn btn-sm btn-primary" href="contact.html">Book Now</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="mb-4" data-aos="fade-up">
+      <h2 class="h5 mb-3">Why Choose Us</h2>
+      <div class="row g-3 row-cols-1 row-cols-md-4">
+        <div class="col"><div class="feature h-100 text-center"><i class="bi bi-patch-check fs-3 text-primary"></i><div class="fw-semibold mt-2">Certified Technicians</div><small class="text-secondary">Trained experts at your service.</small></div></div>
+        <div class="col"><div class="feature h-100 text-center"><i class="bi bi-cpu fs-3 text-primary"></i><div class="fw-semibold mt-2">Genuine Parts</div><small class="text-secondary">OEM-grade components.</small></div></div>
+        <div class="col"><div class="feature h-100 text-center"><i class="bi bi-truck fs-3 text-primary"></i><div class="fw-semibold mt-2">Same Day / Doorstep</div><small class="text-secondary">Quick and convenient.</small></div></div>
+        <div class="col"><div class="feature h-100 text-center"><i class="bi bi-shield-lock fs-3 text-primary"></i><div class="fw-semibold mt-2">Warranty</div><small class="text-secondary">Assured post-repair support.</small></div></div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="mb-4" data-aos="fade-up">
+      <h2 class="h5 mb-3">How It Works</h2>
+      <div class="row g-3 row-cols-1 row-cols-md-4">
+        <div class="col"><div class="feature h-100 text-center"><i class="bi bi-calendar2-check fs-3 text-primary"></i><div class="fw-semibold mt-2">Book a Service</div><small class="text-secondary">Online or call us</small></div></div>
+        <div class="col"><div class="feature h-100 text-center"><i class="bi bi-bicycle fs-3 text-primary"></i><div class="fw-semibold mt-2">Pickup / Walk-in</div><small class="text-secondary">Free pickup available</small></div></div>
+        <div class="col"><div class="feature h-100 text-center"><i class="bi bi-gear-wide-connected fs-3 text-primary"></i><div class="fw-semibold mt-2">Repair by Experts</div><small class="text-secondary">Transparent process</small></div></div>
+        <div class="col"><div class="feature h-100 text-center"><i class="bi bi-box-seam fs-3 text-primary"></i><div class="fw-semibold mt-2">Get Back with Warranty</div><small class="text-secondary">Peace of mind</small></div></div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="mb-4" data-aos="fade-up">
+      <h2 class="h5 mb-3">Customer Reviews</h2>
+      <div class="row g-3 row-cols-1 row-cols-md-3">
+        <div class="col"><div class="testimonial h-100"><div class="text-warning mb-1">★★★★★</div><div>“Screen fixed in an hour. Great service!”</div><small class="text-secondary">— Priya, iPhone 12</small></div></div>
+        <div class="col"><div class="testimonial h-100"><div class="text-warning mb-1">★★★★★</div><div>“Battery replaced, phone feels new.”</div><small class="text-secondary">— Arjun, OnePlus 9</small></div></div>
+        <div class="col"><div class="testimonial h-100"><div class="text-warning mb-1">★★★★☆</div><div>“Helpful staff and fair pricing.”</div><small class="text-secondary">— Meera, Galaxy S21</small></div></div>
+      </div>
+    </section>
+
+    <!-- Pricing Table -->
+    <section class="mb-4" data-aos="fade-up">
+      <h2 class="h5 mb-3">Pricing (Estimates)</h2>
+      <div class="table-responsive">
+        <table class="table pricing-table align-middle">
+          <thead class="table-light">
+            <tr><th>Issue</th><th>Starting Price</th><th>Time Required</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Screen Replacement</td><td>₹99</td><td>1–2 hrs</td></tr>
+            <tr><td>Battery Replacement</td><td>₹49</td><td>30–45 mins</td></tr>
+            <tr><td>Charging Port Repair</td><td>₹59</td><td>1 hr</td></tr>
+            <tr><td>Water Damage Repair</td><td>₹79</td><td>2–3 hrs</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section id="booking" class="mb-4" data-aos="fade-up">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="h5 mb-2">Get a Free Quote</h2>
+          <p class="text-secondary">Fill your details and we’ll call you back.</p>
+          <form id="repairBooking" novalidate>
+            <div class="row g-3">
+              <div class="col-md-4"><label class="form-label" for="bkName">Name</label><input id="bkName" class="form-control" required placeholder="Your name"></div>
+              <div class="col-md-4"><label class="form-label" for="bkPhone">Phone</label><input id="bkPhone" class="form-control" required placeholder="+91 98765 43210"></div>
+              <div class="col-md-4"><label class="form-label" for="bkEmail">Email</label><input id="bkEmail" type="email" class="form-control" placeholder="you@example.com"></div>
+              <div class="col-md-4"><label class="form-label" for="bkBrand">Device Brand</label><select id="bkBrand" class="form-select" required><option value="" disabled selected>Select</option><option>Apple</option><option>Samsung</option><option>OnePlus</option><option>Xiaomi</option></select></div>
+              <div class="col-md-4"><label class="form-label" for="bkModel">Model</label><input id="bkModel" class="form-control" required placeholder="e.g., iPhone 13"></div>
+              <div class="col-md-4"><label class="form-label" for="bkIssue">Issue</label><input id="bkIssue" class="form-control" required placeholder="Screen, Battery, etc."></div>
+              <div class="col-12"><label class="form-label" for="bkDesc">Issue Description</label><textarea id="bkDesc" class="form-control" rows="3" placeholder="Tell us more..."></textarea></div>
+            </div>
+            <div class="mt-3"><button class="btn btn-primary"><i class="bi bi-telephone-outbound me-1"></i> Get Free Quote</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-4" data-aos="fade-up">
+      <h2 class="h5 mb-3">FAQ</h2>
+      <div class="accordion" id="faq">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q1"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1">How long does screen replacement take?</button></h2>
+          <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faq"><div class="accordion-body">Typically 1–2 hours depending on model and part availability.</div></div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q2"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">Do you use original spare parts?</button></h2>
+          <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">We use OEM or equivalent high‑quality parts backed by warranty.</div></div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q3"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">Is there a warranty on repairs?</button></h2>
+          <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Yes, most repairs include up to 90‑day limited warranty. Terms apply.</div></div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q4"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a4">Can you repair water‑damaged phones?</button></h2>
+          <div id="a4" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">We perform board‑level cleaning and diagnostics; success depends on damage extent.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location & Contact -->
+    <section class="mb-4" data-aos="fade-up">
+      <h2 class="h5 mb-3">Find Us</h2>
+      <div class="row g-3">
+        <div class="col-12 col-lg-8">
+          <iframe class="map-embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31514.779!2d77.5946!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sen!2sin!4v000000000"></iframe>
+        </div>
+        <div class="col-12 col-lg-4 d-flex flex-column gap-2">
+          <a class="btn btn-outline-primary" href="tel:+9101234567890"><i class="bi bi-telephone me-1"></i> Call Us</a>
+          <a class="btn btn-outline-success" href="https://wa.me/9101234567890" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-1"></i> WhatsApp</a>
+          <a class="btn btn-dark" href="#booking"><i class="bi bi-tools me-1"></i> Book Repair</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4 mt-4 border-top">
+    <div class="container d-flex justify-content-between align-items-center">
+      <small> <span id="year"></span> Mobile Services</small>
+      <div class="d-flex gap-3">
+        <a href="#" class="text-secondary"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="text-secondary"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="text-secondary"><i class="bi bi-twitter-x"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 650, once: true });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Quick Check logic (simple estimates)
+    const ESTIMATES = {
+      Apple: { 'Screen Replacement': { price: '₹129', time: '1–2 hrs' }, 'Battery Replacement': { price: '₹69', time: '45–60 mins' }, 'Charging Port Repair': { price: '₹79', time: '1–1.5 hrs' }, 'Speaker/Mic Issue': { price: '₹59', time: '1 hr' }, 'Camera Replacement': { price: '₹99', time: '1–2 hrs' }, 'Water Damage': { price: '₹119', time: '2–3 hrs' }, 'Software Issues': { price: '₹39', time: '30–60 mins' } },
+      Samsung: { 'Screen Replacement': { price: '₹119', time: '1–2 hrs' }, 'Battery Replacement': { price: '₹59', time: '45–60 mins' }, 'Charging Port Repair': { price: '₹69', time: '1 hr' }, 'Speaker/Mic Issue': { price: '₹49', time: '1 hr' }, 'Camera Replacement': { price: '₹89', time: '1–2 hrs' }, 'Water Damage': { price: '₹109', time: '2–3 hrs' }, 'Software Issues': { price: '₹29', time: '30–60 mins' } },
+      OnePlus: { 'Screen Replacement': { price: '₹109', time: '1–2 hrs' }, 'Battery Replacement': { price: '₹49', time: '30–45 mins' }, 'Charging Port Repair': { price: '₹59', time: '1 hr' }, 'Speaker/Mic Issue': { price: '₹39', time: '1 hr' }, 'Camera Replacement': { price: '₹79', time: '1–2 hrs' }, 'Water Damage': { price: '₹99', time: '2–3 hrs' }, 'Software Issues': { price: '₹25', time: '30–60 mins' } },
+      Xiaomi: { 'Screen Replacement': { price: '₹89', time: '1–2 hrs' }, 'Battery Replacement': { price: '₹39', time: '30–45 mins' }, 'Charging Port Repair': { price: '₹49', time: '1 hr' }, 'Speaker/Mic Issue': { price: '₹35', time: '1 hr' }, 'Camera Replacement': { price: '₹69', time: '1–2 hrs' }, 'Water Damage': { price: '₹89', time: '2–3 hrs' }, 'Software Issues': { price: '₹19', time: '30–60 mins' } }
+    };
+    const qcBrand = document.getElementById('qcBrand');
+    const qcModel = document.getElementById('qcModel');
+    const qcIssue = document.getElementById('qcIssue');
+    const qcBtn = document.getElementById('qcCheck');
+    const qcResult = document.getElementById('qcResult');
+    const qcPrice = document.getElementById('qcPrice');
+    const qcTime = document.getElementById('qcTime');
+
+    qcBtn?.addEventListener('click', () => {
+      if (!qcBrand.value || !qcModel.value.trim() || !qcIssue.value) {
+        qcResult.classList.add('d-none');
+        alert('Please select brand, enter model, and choose an issue.');
+        return;
+      }
+      const est = ESTIMATES[qcBrand.value]?.[qcIssue.value];
+      if (est) {
+        qcPrice.textContent = est.price;
+        qcTime.textContent = est.time;
+      } else {
+        qcPrice.textContent = 'Varies';
+        qcTime.textContent = '—';
+      }
+      qcResult.classList.remove('d-none');
+    });
+
+    // Booking form (mock submit)
+    document.getElementById('repairBooking')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thanks! We will contact you shortly with a quote.');
+      e.target.reset();
+    });
+  </script>
+  </body>
+</html>

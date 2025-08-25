@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services - Mobile Services</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .services-grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:1rem}@media(min-width:576px){.services-grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:768px){.services-grid{grid-template-columns:repeat(3,1fr)}}@media(min-width:1200px){.services-grid{grid-template-columns:repeat(4,1fr)}}
+    .service-card{border:1px solid rgba(0,0,0,.08);border-radius:.75rem;overflow:hidden;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.03);transition:transform .2s ease, box-shadow .2s ease}
+    .service-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+    .service-card img{width:100%;height:160px;object-fit:cover}
+    .service-card .content{padding:.9rem}
+    /* Extended sections styling */
+    .section-block{border:1px solid rgba(0,0,0,.08);border-radius:.75rem;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.03);padding:1.25rem}
+    .check-list{margin:0;padding:0;list-style:none}
+    .check-list li{display:flex;gap:.5rem;align-items:flex-start;margin-bottom:.5rem}
+    .check-list i{color:#0d6efd;margin-top:.15rem}
+    /* Photos for sections */
+    .section-photo{width:100%;height:220px;object-fit:cover;border-radius:.5rem}
+    @media (min-width: 768px){ .section-photo{height:100%} }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Mobile Services</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="repairs.html">Repairs</a></li>
+          <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+          <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <h1 class="h3 mb-3" data-aos="fade-up">Our Services</h1>
+    <div class="services-grid" data-aos="fade-up" data-aos-delay="50">
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="0">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" alt="Screen Replacement">
+        <div class="content">
+          <h6>Screen Replacement</h6>
+          <p class="mb-2">High-quality displays for phones and tablets.</p>
+          <a href="#" class="btn btn-sm btn-primary open-booking" data-service="Screen Replacement">Book Now</a>
+        </div>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="60">
+        <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="Battery Service">
+        <div class="content">
+          <h6>Battery Service</h6>
+          <p class="mb-2">Genuine batteries with quick turnaround.</p>
+          <a href="#" class="btn btn-sm btn-primary open-booking" data-service="Battery Service">Book Now</a>
+        </div>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="120">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Water Damage Repair">
+        <div class="content">
+          <h6>Water Damage Repair</h6>
+          <p class="mb-2">Diagnostics and restoration for liquid damage.</p>
+          <a href="#" class="btn btn-sm btn-primary open-booking" data-service="Water Damage Repair">Book Now</a>
+        </div>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="180">
+        <img src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=1200&auto=format&fit=crop" alt="Data Recovery">
+        <div class="content">
+          <h6>Data Recovery</h6>
+          <p class="mb-2">Recover lost files and photos securely.</p>
+          <a href="#" class="btn btn-sm btn-primary open-booking" data-service="Data Recovery">Book Now</a>
+        </div>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="240">
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" alt="Software Support">
+        <div class="content">
+          <h6>Software Support</h6>
+          <p class="mb-2">Setup, updates, and troubleshooting.</p>
+          <a href="#" class="btn btn-sm btn-primary open-booking" data-service="Software Support">Book Now</a>
+        </div>
+      </div>
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+        <img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?q=80&w=1200&auto=format&fit=crop" alt="Accessory Installations">
+        <div class="content">
+          <h6>Accessory Installations</h6>
+          <p class="mb-2">Screen guards, cases, and more.</p>
+          <a href="#" class="btn btn-sm btn-primary open-booking" data-service="Accessory Installations">Book Now</a>
+        </div>
+      </div>
+    </div>
+    <!-- Extended: Mobile Repair Services -->
+    <h2 class="h5 mt-5 mb-3" data-aos="fade-up">Mobile Repair Services</h2>
+    <div class="section-block mb-4" data-aos="fade-up" data-aos-delay="50">
+      <div class="row g-3 align-items-stretch">
+        <div class="col-md-4">
+          <img class="section-photo" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1600&auto=format&fit=crop" alt="Mobile repair services">
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="check-list">
+                <li><i class="bi bi-check2-circle"></i><span>Screen Replacement (LCD/Touch Screen)</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Battery Replacement</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Charging Port Repair</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Speaker / Mic Repair</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Power / Volume Button Repair</span></li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="check-list">
+                <li><i class="bi bi-check2-circle"></i><span>Camera Replacement (Front/Rear)</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Water Damage Repair</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Software Installation / Update</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Motherboard Repair</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Back Glass Replacement</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-3">
+        <a href="contact.html" class="btn btn-primary btn-sm">Book a Repair</a>
+      </div>
+    </div>
+    <!-- Extended: Software & Unlocking Services -->
+    <h2 class="h5 mb-3" data-aos="fade-up">Software & Unlocking Services</h2>
+    <div class="section-block mb-4" data-aos="fade-up" data-aos-delay="50">
+      <div class="row g-3 align-items-stretch">
+        <div class="col-md-4">
+          <img class="section-photo" src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop" alt="Software and unlocking">
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="check-list">
+                <li><i class="bi bi-check2-circle"></i><span>Mobile Unlocking (Carrier Unlock / Network Unlock)</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>FRP (Factory Reset Protection) Unlock</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>iCloud Unlock (Legal ways)</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Password / Pattern / PIN Removal</span></li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="check-list">
+                <li><i class="bi bi-check2-circle"></i><span>OS Reinstallation (Android / iOS)</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Data Backup & Restore</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Data Recovery (Deleted Files, Photos, Contacts)</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Virus & Malware Removal</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-3">
+        <a href="contact.html" class="btn btn-outline-primary btn-sm">Get Software Help</a>
+      </div>
+    </div>
+    <!-- Extended: Accessories & Add-ons -->
+    <h2 class="h5 mb-3" data-aos="fade-up">Accessories & Add-ons</h2>
+    <div class="section-block" data-aos="fade-up" data-aos-delay="50">
+      <div class="row g-3 align-items-stretch">
+        <div class="col-md-4">
+          <img class="section-photo" src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?q=80&w=1600&auto=format&fit=crop" alt="Accessories and add-ons">
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="check-list">
+                <li><i class="bi bi-check2-circle"></i><span>Screen Guard Installation (Tempered Glass)</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Mobile Covers & Cases</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Headphones & Earphones</span></li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="check-list">
+                <li><i class="bi bi-check2-circle"></i><span>Chargers & Cables</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Power Banks</span></li>
+                <li><i class="bi bi-check2-circle"></i><span>Bluetooth Devices (Speakers, Earbuds, Smartwatches)</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-3">
+        <a href="contact.html" class="btn btn-outline-secondary btn-sm">Ask for Accessories</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Booking Modal -->
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Book Service</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="bookingModalForm" novalidate>
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="form-label" for="bk_fullname">Full Name</label>
+                <input id="bk_fullname" name="name" class="form-control" placeholder="Enter your name" required>
+                <div class="invalid-feedback">Please enter your name.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="bk_email">Email</label>
+                <input id="bk_email" name="email" type="email" class="form-control" placeholder="Enter your email" required>
+                <div class="invalid-feedback">Please enter a valid email.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="bk_service">Service</label>
+                <select id="bk_service" name="service" class="form-select" required>
+                  <option value="" disabled selected>Select a service</option>
+                  <option>Screen Replacement</option>
+                  <option>Battery Service</option>
+                  <option>Water Damage Repair</option>
+                  <option>Data Recovery</option>
+                  <option>Software Support</option>
+                  <option>Accessory Installations</option>
+                </select>
+                <div class="invalid-feedback">Please select a service.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="bk_date">Date</label>
+                <input id="bk_date" name="date" type="date" class="form-control" required>
+                <div class="invalid-feedback">Please choose a date.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="bk_time">Time</label>
+                <input id="bk_time" name="time" type="time" class="form-control" required>
+                <div class="invalid-feedback">Please choose a time.</div>
+              </div>
+            </div>
+            <div id="bookingModalStatus" class="alert d-none mt-3" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button id="bk_submit" type="button" class="btn btn-success">Submit Booking</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-4 mt-4 border-top">
+    <div class="container d-flex justify-content-between align-items-center">
+      <small> <span id="year"></span> Mobile Services</small>
+      <div class="d-flex gap-3">
+        <a href="#" class="text-secondary"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="text-secondary"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="text-secondary"><i class="bi bi-twitter-x"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 650, once: true });
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Booking Modal logic
+    const bookingModalEl = document.getElementById('bookingModal');
+    const bookingModal = new bootstrap.Modal(bookingModalEl);
+    const bookingForm = document.getElementById('bookingModalForm');
+    const bookingStatus = document.getElementById('bookingModalStatus');
+    const bookingSubmit = document.getElementById('bk_submit');
+
+    function resetBookingStatus(){ bookingStatus.className = 'alert d-none mt-3'; bookingStatus.textContent=''; }
+    function showBookingStatus(msg,type='info'){ bookingStatus.className = `alert alert-${type} mt-3`; bookingStatus.textContent = msg; bookingStatus.classList.remove('d-none'); }
+    function validateBooking(){
+      let ok = true;
+      [...bookingForm.elements].forEach(el => {
+        if (el.required && !el.value.trim()) { el.classList.add('is-invalid'); ok = false; }
+        else { el.classList.remove('is-invalid'); }
+      });
+      return ok;
+    }
+
+    document.querySelectorAll('.open-booking').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        resetBookingStatus();
+        bookingForm.reset();
+        const service = btn.getAttribute('data-service') || '';
+        const select = document.getElementById('bk_service');
+        if (service) {
+          [...select.options].forEach(opt => { if (opt.text === service) select.value = opt.value; });
+        }
+        bookingModal.show();
+      });
+    });
+
+    document.getElementById('bk_submit').addEventListener('click', async () => {
+      resetBookingStatus();
+      if (!validateBooking()) { showBookingStatus('Please fill in all required fields correctly.', 'danger'); return; }
+      bookingSubmit.disabled = true;
+      bookingSubmit.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Submitting...';
+      const payload = {
+        name: bookingForm.name.value.trim(),
+        email: bookingForm.email.value.trim(),
+        service: bookingForm.service.value,
+        date: bookingForm.date.value,
+        time: bookingForm.time.value,
+      };
+      try {
+        await new Promise(r => setTimeout(r, 700));
+        console.table(payload);
+        showBookingStatus('Booking received! We will contact you to confirm the slot.', 'success');
+        setTimeout(()=>{ bookingModal.hide(); bookingForm.reset(); }, 900);
+      } catch(err){
+        console.error(err);
+        showBookingStatus('Something went wrong. Please try again.', 'danger');
+      } finally {
+        bookingSubmit.disabled = false;
+        bookingSubmit.textContent = 'Submit Booking';
+      }
+    });
+  </script>
+ </body>
+</html>
