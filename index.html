@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home - Mobile Services</title>
+  <title>Home -Mobile Services</title>
   <!-- Google Fonts: Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,6 +32,8 @@
     section{ scroll-margin-top:80px; }
     h1,h2,h3,.display-6{ font-weight:700; }
     .navbar-brand strong{ font-weight:800; letter-spacing:-.02em; }
+    /* Brand logo image */
+    .brand-logo{ height:35px; width:auto; margin-right:.18rem; display:inline-block; }
 
     /* Topbar */
     .topbar{ background:#0d0d0d; color:#fff; font-size:.9rem; }
@@ -82,17 +84,185 @@
     footer{ background:#ffffff; border-top:1px solid var(--line); }
     .social a{ color:#212529; }
   </style>
+  <style>
+    /* Base responsive styles */
+    :root {
+      --container-padding: 1rem;
+      --section-padding: 2.5rem 0;
+    }
+
+    /* Responsive typography */
+    html {
+      font-size: 16px;
+    }
+    
+    @media (min-width: 768px) {
+      html {
+        font-size: 17px;
+      }
+    }
+    
+    @media (min-width: 1200px) {
+      html {
+        font-size: 18px;
+      }
+    }
+
+    /* Improved container padding */
+    .container {
+      padding-left: var(--container-padding);
+      padding-right: var(--container-padding);
+    }
+
+    /* Responsive hero section */
+    .hero-landing .carousel-item {
+      min-height: 450px;
+      height: 70vh;
+    }
+
+    @media (max-width: 767.98px) {
+      .hero-landing .carousel-item {
+        min-height: 380px;
+        height: 60vh;
+      }
+      
+      .hero-landing .display-6 {
+        font-size: 1.75rem;
+      }
+      
+      .hero-landing .lead {
+        font-size: 1rem;
+      }
+    }
+
+    /* Enhanced service cards */
+    .services-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    @media (min-width: 576px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 768px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Improved service card hover for touch devices */
+    @media (hover: hover) {
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(0,0,0,.08);
+      }
+    }
+
+    /* Better touch targets for mobile */
+    .btn, .nav-link, .form-control, .form-select {
+      min-height: 2.75rem;
+    }
+
+    /* Responsive spacing */
+    section {
+      padding: var(--section-padding);
+    }
+
+    /* Improved logo grid for mobile */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      align-items: center;
+      justify-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .logo-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+
+    /* Better form controls on mobile */
+    .form-control, .form-select {
+      padding: 0.5rem 1rem;
+    }
+
+    /* Responsive footer */
+    footer {
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      footer {
+        text-align: left;
+      }
+      
+      .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    /* Accessibility improvements */
+    :focus-visible {
+      outline: 2px solid var(--brand-primary);
+      outline-offset: 2px;
+    }
+
+    /* Prevent horizontal scroll */
+    body {
+      overflow-x: hidden;
+    }
+  </style>
+  <style>
+    /* THEME VARIABLES (multi-theme) */
+    html[data-theme="light"]{
+      --brand-primary:#0d6efd; --brand-accent:#f1c40f; --ink:#212529; --paper:#ffffff; --line:#dee2e6; --bg:#f8f9fa;
+    }
+    html[data-theme="dark"]{
+      --brand-primary:#5aa2ff; --brand-accent:#ffb703; --ink:#e9ecef; --paper:#212529; --line:#343a40; --bg:#121416;
+    }
+    html[data-theme="blue"]{
+      --brand-primary:#2563eb; --brand-accent:#22d3ee; --ink:#0f172a; --paper:#ffffff; --line:#e2e8f0; --bg:#f1f5f9;
+    }
+    html[data-theme="emerald"]{
+      --brand-primary:#059669; --brand-accent:#f59e0b; --ink:#052e2b; --paper:#ffffff; --line:#d1fae5; --bg:#ecfdf5;
+    }
+    html[data-theme="sunset"]{
+      --brand-primary:#e11d48; --brand-accent:#f59e0b; --ink:#1f2937; --paper:#ffffff; --line:#fde68a; --bg:#fff7ed;
+    }
+    html[data-theme="contrast"]{
+      --brand-primary:#000000; --brand-accent:#ffff00; --ink:#000; --paper:#fff; --line:#000; --bg:#fff;
+    }
+    body{ background: var(--bg, #f8f9fa); color: var(--ink); }
+    .card{ background: var(--paper); border-color: var(--line); }
+    .navbar, footer{ background: var(--paper)!important; border-color: var(--line)!important; }
+    .nav-link.active{ color: var(--brand-primary)!important; }
+    .btn-primary{ background-color: var(--brand-primary); border-color: var(--brand-primary); }
+    .btn-primary:hover{ filter: brightness(0.9); }
+    .btn-contrast{ background-color: var(--brand-primary); border-color: var(--brand-primary); }
+    .form-control:focus,.form-select:focus{ border-color: var(--brand-primary); box-shadow:0 0 0 .25rem color-mix(in srgb, var(--brand-primary) 25%, transparent); }
+  </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80" tabindex="0">
   <!-- Top Info Bar -->
-  <div class="topbar py-2">
+  <div class="topbar py-2 d-none d-md-block">
     <div class="container d-flex flex-wrap gap-3 justify-content-between">
       <div class="d-flex gap-3">
-        <span><i class="bi bi-geo-alt" aria-hidden="true"></i> <span class="visually-hidden">Office: </span>Location</span>
-        <span><i class="bi bi-telephone" aria-hidden="true"></i> Call: 01234567890</span>
-      </div>
-      <div class="d-flex gap-3">
-        <span><i class="bi bi-envelope" aria-hidden="true"></i> demo@gmail.com</span>
+        <span><i class="bi bi-geo-alt" aria-hidden="true"></i> <span class="visually-hidden">Office: </span>Vizag</span>
+        <span><i class="bi bi-telephone" aria-hidden="true"></i> <a href="tel:8686641641" class="text-white text-decoration-none">Call: 8686641641</a></span>
       </div>
     </div>
   </div>
@@ -101,9 +271,18 @@
   <nav id="mainNav" class="navbar navbar-expand-lg navbar-light sticky-top" style="background:#ffffff; border-bottom:1px solid var(--line);">
     <div class="container py-2">
       <a class="navbar-brand d-flex align-items-center" href="index.html">
-        <span class="brand-dot"></span>
-        <strong>Mobile Services</strong>
+        <img class="brand-logo" src="logo.jpg" alt="Shiva's Mobi Fix Logo">
+        <strong class="d-none d-md-inline">Shiva's Mobi Fix</strong>
       </a>
+      
+      <!-- Mobile contact button -->
+      <div class="d-md-none ms-auto me-2">
+        <a href="tel:8686641641" class="btn btn-sm btn-primary rounded-pill">
+          <i class="bi bi-telephone"></i>
+          <span class="visually-hidden">Call Us</span>
+        </a>
+      </div>
+      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -112,12 +291,27 @@
           <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="repairs.html">Repairs</a></li>
-          <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
           <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="#" aria-label="Search site"><i class="bi bi-search" aria-hidden="true"></i></a></li>
+          <li class="nav-item d-md-none"><a class="nav-link" href="tel:8686641641"><i class="bi bi-telephone me-1"></i> Call Now</a></li>
+          <li class="nav-item d-md-none"><a class="nav-link" href="contact.html"><i class="bi bi-envelope me-1"></i> Contact</a></li>
         </ul>
-        <a href="contact.html" class="btn btn-primary ms-lg-3">Get a Quote</a>
+        
+        <!-- Desktop contact button -->
+        <div class="d-none d-md-block ms-lg-3">
+          <a href="contact.html" class="btn btn-primary">Contact Us</a>
+        </div>
+        
+        <!-- Theme Switcher -->
+        <div class="ms-lg-3 mt-2 mt-lg-0">
+          <select id="themeSwitcher" class="form-select form-select-sm" aria-label="Select theme">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="blue">Blue</option>
+            <option value="emerald">Emerald</option>
+            <option value="sunset">Sunset</option>
+            <option value="contrast">High Contrast</option>
+          </select>
+        </div>
       </div>
     </div>
   </nav>
@@ -132,20 +326,21 @@
           <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop');">
+          <div class="carousel-item active" style="background-image:url('https://static.wixstatic.com/media/854859_fd632460de75484195c6a309794268ed~mv2.png/v1/fill/w_689,h_538,al_c,lg_1,q_90,enc_auto/854859_fd632460de75484195c6a309794268ed~mv2.png');">
             <div class="overlay"></div>
             <div class="caption">
               <div class="content" data-aos="fade-up">
-                <h1 class="display-6 fw-bold mb-3">Fast, Reliable Mobile Repairs</h1>
-                <p class="lead mb-4">Screens, batteries, water damage and more — expert service with genuine parts.</p>
-                <div class="d-flex gap-2 justify-content-center">
+                <h1 class="display-6 fw-bold mb-3">Mobi Fix Phone Repair Experts</h1>
+                <p class="lead mb-4">Mobile Software, Country Unlocking, Hardware Repairs, Chiplevel and more — expert service with genuine parts.</p>
+                <div class="d-flex gap-2 justify-content-center flex-wrap">
                   <a href="services.html" class="btn btn-contrast"><i class="bi bi-grid me-1" aria-hidden="true"></i> View Services</a>
                   <a href="contact.html" class="btn btn-accent"><i class="bi bi-envelope me-1" aria-hidden="true"></i> Contact Us</a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="carousel-item" style="background-image:url('https://images.unsplash.com/photo-1566728595333-75a1d7cae961?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGhvbmUlMjByZXBhaXJ8ZW58MHx8MHx8fDA%3D');">
+          <!-- Other carousel items remain the same -->
+          <div class="carousel-item" style="background-image:url('https://static.wixstatic.com/media/854859_0630559b6b74499bb0b0661636f18096~mv2.png/v1/fill/w_691,h_538,al_c,lg_1,q_90,enc_auto/854859_0630559b6b74499bb0b0661636f18096~mv2.png');">
             <div class="overlay"></div>
             <div class="caption">
               <div class="content" data-aos="fade-up">
@@ -155,7 +350,7 @@
               </div>
             </div>
           </div>
-          <div class="carousel-item" style="background-image:url('https://media.istockphoto.com/id/1365310330/photo/excited-young-indian-man-winner-using-smartphone-isolated-on-yellow-background.jpg?s=612x612&w=0&k=20&c=mbCnh1Bd715P9JSdqrllYYmshIyfDkgafYPK53_S-m0=');">
+          <div class="carousel-item" style="background-image:url('https://static.wixstatic.com/media/854859_f136377ff23446a7a04db8c93ce31bc0~mv2.png/v1/fill/w_691,h_538,al_c,lg_1,q_90,enc_auto/854859_f136377ff23446a7a04db8c93ce31bc0~mv2.png');">
             <div class="overlay"></div>
             <div class="caption">
               <div class="content" data-aos="fade-up">
@@ -178,207 +373,358 @@
     </section>
 
     <!-- About -->
-    <section id="about" class="mb-4" data-aos="fade-up">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title mb-2">About</h5>
-          <p class="text-secondary mb-0">At Nico Tech, we are dedicated to being your go-to destination for all things mobile repair in New York. With years of expertise under our belt, our team of skilled technicians excels in diagnosing and resolving a wide array of issues plaguing your devices.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Repairs -->
-    <section id="repairs" class="mb-4" data-aos="fade-up">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title mb-2">Repairs</h5>
-          <p class="text-secondary">Submit repair requests, track repair status, and get estimates.</p>
-          <div class="row g-3 row-cols-1 row-cols-md-3">
-            <div class="col"><div class="card h-100"><div class="card-body"><i class="bi bi-wrench-adjustable-circle text-info fs-4" aria-hidden="true"></i><h6 class="mt-2 mb-1">Diagnostics</h6><small class="text-secondary">Initial assessment and quote.</small></div></div></div>
-            <div class="col"><div class="card h-100"><div class="card-body"><i class="bi bi-shield-check text-info fs-4" aria-hidden="true"></i><h6 class="mt-2 mb-1">Certified Parts</h6><small class="text-secondary">Quality guaranteed replacements.</small></div></div></div>
-            <div class="col"><div class="card h-100"><div class="card-body"><i class="bi bi-clock-history text-info fs-4" aria-hidden="true"></i><h6 class="mt-2 mb-1">Fast Turnaround</h6><small class="text-secondary">Repairs completed quickly.</small></div></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Blogs -->
-    <section id="blogs" class="mb-4" data-aos="fade-up">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title mb-2">Blogs</h5>
-          <div class="row g-3 row-cols-1 row-cols-md-3">
-            <div class="col"><div class="card h-100"><div class="card-body"><h6 class="mb-1">How to track your orders</h6><small class="text-secondary d-block">Tips for getting real-time updates.</small><div class="mt-2"><a href="#" class="btn btn-sm btn-link p-0 read-more" data-query="How to track your orders">Read more <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></div></div></div></div>
-            <div class="col"><div class="card h-100"><div class="card-body"><h6 class="mb-1">Returns that work for you</h6><small class="text-secondary d-block">Make exchanges hassle-free.</small><div class="mt-2"><a href="#" class="btn btn-sm btn-link p-0 read-more" data-query="Returns that work for you">Read more <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></div></div></div></div>
-            <div class="col"><div class="card h-100"><div class="card-body"><h6 class="mb-1">Support that cares</h6><small class="text-secondary d-block">Our approach to customer success.</small><div class="mt-2"><a href="#" class="btn btn-sm btn-link p-0 read-more" data-query="Support that cares">Read more <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a></div></div></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+   
+   
     <!-- Services (CSS Grid) -->
-    <section id="services" class="mb-4" data-aos="fade-up">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title mb-2">Our Services</h5>
-          <p class="text-secondary mb-3">Choose a service and book a convenient slot. Fully responsive grid.</p>
-          <div class="services-grid">
-            <div class="service-card" data-aos="zoom-in" data-aos-delay="0">
-              <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop" alt="Screen Replacement">
-              <div class="content">
-                <h6>Screen Replacement</h6>
-                <p>High-quality displays for phones and tablets.</p>
-                
-              </div>
+    <section id="services" class="py-4 py-lg-5" data-aos="fade-up">
+      <div class="container">
+        <div class="text-center mb-4 mb-lg-5">
+          <h2 class="h3 fw-bold mb-2">Our Services</h2>
+          <p class="text-muted mb-0">Expert repairs for all your mobile devices</p>
+        </div>
+        
+        <div class="services-grid">
+          <!-- Service Card 1 -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="50">
+            <div class="service-card-img">
+              <img src="https://images.unsplash.com/photo-1511707171634-75a1d7cae961?q=80&w=1200&auto=format&fit=crop" 
+                   alt="Screen Replacement" 
+                   loading="lazy">
             </div>
-            <div class="service-card" data-aos="zoom-in" data-aos-delay="60">
-              <img src="https://images.unsplash.com/photo-1518779578993-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Battery Service">
-              <div class="content">
-                <h6>Battery Service</h6>
-                <p>Genuine batteries with quick turnaround.</p>
-                <!-- <div><a href="contact.html" class="btn btn-sm btn-accent">Book Now</a></div> -->
-              </div>
-            </div>
-            <div class="service-card" data-aos="zoom-in" data-aos-delay="120">
-              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Water Damage Repair">
-              <div class="content">
-                <h6>Water Damage Repair</h6>
-                <p>Diagnostics and restoration for liquid damage.</p>
-                <!-- <div><a href="contact.html" class="btn btn-sm btn-accent">Book Now</a></div> -->
-              </div>
-            </div>
-            <div class="service-card" data-aos="zoom-in" data-aos-delay="180">
-              <img src="https://images.unsplash.com/photo-1491933382434-500287f9b54b?q=80&w=1200&auto=format&fit=crop" alt="Data Recovery">
-              <div class="content">
-                <h6>Data Recovery</h6>
-                <p>Recover lost files and photos securely.</p>
-                <!-- <div><a href="contact.html" class="btn btn-sm btn-accent">Book Now</a></div> -->
-              </div>
-            </div>
-            <div class="service-card" data-aos="zoom-in" data-aos-delay="240">
-              <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" alt="Software Support">
-              <div class="content">
-                <h6>Software Support</h6>
-                <p>Setup, updates, and troubleshooting.</p>
-                <!-- <div><a href="contact.html" class="btn btn-sm btn-accent">Book Now</a></div> -->
-              </div>
-            </div>
-            <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
-              <img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?q=80&w=1200&auto=format&fit=crop" alt="Accessory Installations">
-              <div class="content">
-                <h6>Accessory Installations</h6>
-                <p>Screen guards, cases, and more.</p>
-                <!-- <div><a href="contact.html" class="btn btn-sm btn-accent">Book Now</a></div> -->
-              </div>
+            <div class="service-card-body">
+              <h3 class="h5 mb-2">Screen Replacement</h3>
+              <p class="text-muted small mb-3">High-quality displays for all major phone models with warranty.</p>
+              <ul class="list-unstyled small text-muted mb-0">
+                <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>Same-day service</li>
+                <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>OEM quality screens</li>
+                <li class="mb-0"><i class="bi bi-check-circle-fill text-success me-2"></i>1-year warranty</li>
+              </ul>
             </div>
           </div>
+
+          <!-- Service Card 2 -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card-img">
+              <img src="https://images.unsplash.com/photo-1512941937669-90adfe611b60?q=80&w=1200&auto=format&fit=crop" 
+                   alt="Battery Replacement" 
+                   loading="lazy">
+            </div>
+            <div class="service-card-body">
+              <h3 class="h5 mb-2">Battery Replacement</h3>
+              <p class="text-muted small mb-3">Restore your device's battery life with our premium replacements.</p>
+              <ul class="list-unstyled small text-muted mb-0">
+                <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>High-capacity batteries</li>
+                <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>Quick installation</li>
+                <li class="mb-0"><i class="bi bi-check-circle-fill text-success me-2"></i>6-month warranty</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Service Card 3 -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="service-card-img">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" 
+                   alt="Water Damage Repair" 
+                   loading="lazy">
+            </div>
+            <div class="service-card-body">
+              <h3 class="h5 mb-2">Water Damage Repair</h3>
+              <p class="text-muted small mb-3">Emergency service to save your water-damaged device.</p>
+              <ul class="list-unstyled small text-muted mb-0">
+                <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>Free diagnostics</li>
+                <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>Advanced drying techniques</li>
+                <li class="mb-0"><i class="bi bi-check-circle-fill text-success me-2"></i>Data recovery options</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Service Card 4 -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card-img">
+              <img src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?q=80&w=1200&auto=format&fit=crop" 
+                   alt="Accessory Installations" 
+                   loading="lazy">
+            </div>
+            <div class="service-card-body">
+              <h3 class="h5 mb-2">Accessory Installations</h3>
+              <p class="text-muted small mb-3">Professional installation of screen protectors and cases.</p>
+              <ul class="list-unstyled small text-muted mb-0">
+                <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>Bubble-free application</li>
+                <li class="mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>Premium accessories</li>
+                <li class="mb-0"><i class="bi bi-check-circle-fill text-success me-2"></i>Perfect alignment</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4 mt-lg-5">
+          <a href="services.html" class="btn btn-outline-primary">
+            View All Services <i class="bi bi-arrow-right ms-2"></i>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Case Studies -->
-    <section id="case-studies" class="mb-4" data-aos="fade-up">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title mb-2">Case Studies</h5>
-          <p class="text-secondary">Real results from real customers.</p>
-          <div class="row g-3 row-cols-1 row-cols-md-3">
-            <div class="col">
-              <div class="card h-100">
-                <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Retail partner devices">
-                <div class="card-body">
-                  <h6 class="mb-1">Retail Chain – 300+ Devices</h6>
-                  <small class="text-secondary d-block">Challenge → Approach → Impact</small>
-                  <ul class="mt-2 mb-0 small text-secondary">
-                    <li>Reduced downtime by 42%</li>
-                    <li>Same-day turnaround in 8 cities</li>
-                    <li>Warranty claims down 31%</li>
-                  </ul>
-                  <div class="mt-2"><a class="btn btn-sm btn-link p-0" href="#">Read full story <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="https://images.unsplash.com/photo-1559136653-6fbeb97df3ed?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Logistics handhelds">
-                <div class="card-body">
-                  <h6 class="mb-1">Logistics – Handheld Fleet</h6>
-                  <small class="text-secondary d-block">Diagnostics at scale</small>
-                  <ul class="mt-2 mb-0 small text-secondary">
-                    <li>MTTR cut from 3 days to 8 hours</li>
-                    <li>Predictive battery swaps</li>
-                    <li>99% device uptime</li>
-                  </ul>
-                  <div class="mt-2"><a class="btn btn-sm btn-link p-0" href="#">Read full story <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Enterprise support">
-                <div class="card-body">
-                  <h6 class="mb-1">Enterprise Support Desk</h6>
-                  <small class="text-secondary d-block">White-glove SLAs</small>
-                  <ul class="mt-2 mb-0 small text-secondary">
-                    <li>CSAT 4.9/5 over 12 months</li>
-                    <li>24/7 on-call engineers</li>
-                    <li>ISO27001 compliant processes</li>
-                  </ul>
-                  <div class="mt-2"><a class="btn btn-sm btn-link p-0" href="#">Read full story <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <style>
+      /* Services Section Styles */
+      .service-card {
+        background: var(--paper);
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
 
-    <!-- Mid-page CTA -->
-    <section class="mb-4" data-aos="fade-up" aria-label="Call to action">
-      <div class="card border-0" style="background:var(--brand-primary); color:white;">
-        <div class="card-body d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
-          <div>
-            <h5 class="mb-1">Ready to accelerate your device turnaround?</h5>
-            <p class="mb-0">Get a free 15‑minute assessment with our specialists.</p>
-          </div>
-          <a href="contact.html" class="btn btn-light">Book a Call</a>
-        </div>
-      </div>
-    </section>
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      }
+
+      .service-card-img {
+        position: relative;
+        padding-top: 60%;
+        overflow: hidden;
+      }
+
+      .service-card-img img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .service-card:hover .service-card-img img {
+        transform: scale(1.05);
+      }
+
+      .service-card-body {
+        padding: 1.25rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .service-card h3 {
+        color: var(--ink);
+        margin-bottom: 0.5rem;
+      }
+
+      .service-card p {
+        margin-bottom: 1rem;
+        flex-grow: 1;
+      }
+
+      @media (max-width: 767.98px) {
+        .services-grid {
+          gap: 1.5rem;
+        }
+        
+        .service-card {
+          max-width: 400px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      /* Animation for service cards */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .service-card[data-aos="fade-up"] {
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      /* Responsive adjustments */
+      @media (min-width: 576px) {
+        .service-card-img {
+          padding-top: 65%;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .service-card-img {
+          padding-top: 70%;
+        }
+      }
+    </style>
 
     <!-- Testimonials -->
-    <section id="testimonials" class="mb-4" data-aos="fade-up">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title mb-2">What Clients Say</h5>
-          <div class="row g-3 row-cols-1 row-cols-md-3">
-            <div class="col">
-              <div class="card h-100">
-                <div class="card-body">
-                  <p class="mb-2">“They cut our device downtime nearly in half. Communication is stellar.”</p>
-                  <div class="d-flex align-items-center gap-2"><i class="bi bi-person-circle fs-4" aria-hidden="true"></i><div><strong>Riya S.</strong><div class="text-secondary small">Ops Manager, Retail</div></div></div>
+    <section id="testimonials" class="py-4 py-lg-5 bg-light" data-aos="fade-up">
+      <div class="container">
+        <div class="text-center mb-4 mb-lg-5">
+          <h2 class="h3 fw-bold mb-2">What Our Customers Say</h2>
+          <p class="text-muted mb-0">Don't just take our word for it - hear from our satisfied customers</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Testimonial 1 -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="testimonial-card h-100" data-aos="fade-up" data-aos-delay="50">
+              <div class="testimonial-rating mb-3">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+              </div>
+              <p class="testimonial-text mb-4">"Fast and professional service! Had my phone screen replaced in under an hour. The staff was very knowledgeable and the price was fair. Will definitely come back for any future repairs."</p>
+              <div class="testimonial-author d-flex align-items-center">
+                <div class="testimonial-avatar me-3">
+                  <i class="bi bi-person-circle fs-2 text-muted"></i>
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold">Rajesh Kumar</h6>
+                  <small class="text-muted">Visakhapatnam</small>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card h-100">
-                <div class="card-body">
-                  <p class="mb-2">“Transparent pricing and lightning-fast repairs. Our NPS jumped by 12 points.”</p>
-                  <div class="d-flex align-items-center gap-2"><i class="bi bi-person-circle fs-4" aria-hidden="true"></i><div><strong>Akash P.</strong><div class="text-secondary small">Head of IT, Logistics</div></div></div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="testimonial-card h-100" data-aos="fade-up" data-aos-delay="100">
+              <div class="testimonial-rating mb-3">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+              </div>
+              <p class="testimonial-text mb-4">"I was skeptical about getting my water-damaged phone fixed, but these guys worked magic! Recovered all my data and got my phone working like new. Highly recommend their services!"</p>
+              <div class="testimonial-author d-flex align-items-center">
+                <div class="testimonial-avatar me-3">
+                  <i class="bi bi-person-circle fs-2 text-muted"></i>
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold">Priya Sharma</h6>
+                  <small class="text-muted">Visakhapatnam</small>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card h-100">
-                <div class="card-body">
-                  <p class="mb-2">“Proactive battery program saved us from field failures. Highly recommend.”</p>
-                  <div class="d-flex align-items-center gap-2"><i class="bi bi-person-circle fs-4" aria-hidden="true"></i><div><strong>Neha T.</strong><div class="text-secondary small">IT Operations, Enterprise</div></div></div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="col-12 col-md-6 col-lg-4 mx-auto">
+            <div class="testimonial-card h-100" data-aos="fade-up" data-aos-delay="150">
+              <div class="testimonial-rating mb-3">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-half text-warning"></i>
+              </div>
+              <p class="testimonial-text mb-4">"Great customer service and quick turnaround time. They replaced my phone's battery, and now it lasts all day again. Will definitely be my go-to repair shop from now on."</p>
+              <div class="testimonial-author d-flex align-items-center">
+                <div class="testimonial-avatar me-3">
+                  <i class="bi bi-person-circle fs-2 text-muted"></i>
+                </div>
+                <div>
+                  <h6 class="mb-0 fw-bold">Amit Patel</h6>
+                  <small class="text-muted">Visakhapatnam</small>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <div class="text-center mt-4 mt-lg-5">
+          <a href="contact.html" class="btn btn-primary">
+            Share Your Experience <i class="bi bi-chat-left-text ms-2"></i>
+          </a>
+        </div>
       </div>
+
+      <style>
+        /* Testimonials Section Styles */
+        .testimonial-card {
+          background: var(--paper);
+          border-radius: 0.75rem;
+          padding: 1.5rem;
+          height: 100%;
+          box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          border: 1px solid var(--line);
+        }
+
+        .testimonial-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-rating {
+          color: #ffc107;
+          font-size: 1.1rem;
+        }
+
+        .testimonial-text {
+          color: var(--ink);
+          font-style: italic;
+          position: relative;
+          padding-left: 1rem;
+          border-left: 3px solid var(--brand-primary);
+        }
+
+        .testimonial-avatar {
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 50%;
+          background-color: #f8f9fa;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        @media (max-width: 767.98px) {
+          .testimonial-card {
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+        }
+
+        /* Animation for testimonials */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .testimonial-card[data-aos="fade-up"] {
+          opacity: 0;
+          animation: fadeIn 0.6s ease forwards;
+        }
+
+        /* Ensure proper spacing on mobile */
+        @media (max-width: 767.98px) {
+          .testimonial-card {
+            margin-bottom: 1.5rem;
+          }
+          
+          .testimonial-card:last-child {
+            margin-bottom: 0;
+          }
+        }
+      </style>
     </section>
 
     <!-- FAQ -->
@@ -399,65 +745,32 @@
               <h2 class="accordion-header" id="q3"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3" aria-expanded="false" aria-controls="a3">Do you offer pickup & drop?</button></h2>
               <div id="a3" class="accordion-collapse collapse" aria-labelledby="q3" data-bs-parent="#faqAcc"><div class="accordion-body">Yes, in select cities. Contact us to check availability in your area.</div></div>
             </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="q4"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a4" aria-expanded="false" aria-controls="a4">Do you offer warranty?</button></h2>
+              <div id="a4" class="accordion-collapse collapse" aria-labelledby="q4" data-bs-parent="#faqAcc"><div class="accordion-body">Yes, we offer a 30-day warranty on all repairs.</div></div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="q5"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a5" aria-expanded="false" aria-controls="a5">How do I schedule a service?</button></h2>
+              <div id="a5" class="accordion-collapse collapse" aria-labelledby="q5" data-bs-parent="#faqAcc"><div class="accordion-body">You can book a service online through our website or call us directly.</div></div>
+            </div>
+            
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Contact Us (Formspree-ready) -->
-    <section id="contact-us" class="mb-4" data-aos="fade-up">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title mb-2">Contact Us</h5>
-          <p class="text-secondary">Send us a message and we’ll get back to you shortly.</p>
-
-          <div id="contactStatus" class="alert alert-info d-none" role="alert"></div>
-
-          <form id="contactForm" novalidate>
-            <div class="row g-3">
-              <div class="col-12 col-md-6">
-                <label for="c_name" class="form-label">Your Name</label>
-                <input id="c_name" type="text" name="name" class="form-control" placeholder="Jane Doe" required>
-                <div class="invalid-feedback">Please enter your name.</div>
-              </div>
-              <div class="col-12 col-md-6">
-                <label for="c_email" class="form-label">Your Email</label>
-                <input id="c_email" type="email" name="email" class="form-control" placeholder="jane@example.com" required>
-                <div class="invalid-feedback">Please enter a valid email.</div>
-              </div>
-              <div class="col-12 col-md-6">
-                <label for="c_phone" class="form-label">Phone (optional)</label>
-                <input id="c_phone" type="tel" name="phone" class="form-control" placeholder="+91 98765 43210">
-              </div>
-              <div class="col-12 col-md-6">
-                <label for="c_subject" class="form-label">Subject</label>
-                <input id="c_subject" type="text" name="subject" class="form-control" placeholder="How can we help?" required>
-                <div class="invalid-feedback">Please enter a subject.</div>
-              </div>
-              <div class="col-12">
-                <label for="c_message" class="form-label">Message</label>
-                <textarea id="c_message" name="message" class="form-control" rows="4" placeholder="Write your message..." required></textarea>
-                <div class="invalid-feedback">Please enter a message.</div>
-              </div>
-            </div>
-
-            <div class="mt-3 d-flex gap-2">
-              <button id="contactSubmit" type="submit" class="btn btn-contrast">
-                <span class="contact-btn-text">Send Message</span>
-              </button>
-              <button type="reset" class="btn btn-outline-secondary">Reset</button>
-            </div>
-          </form>
-        </div>
+      <div>
+        <a href="contact.html" class="btn btn-accent mt-3"><i class="bi bi-envelope me-1" aria-hidden="true"></i> Contact Us for More Questions</a>
       </div>
     </section>
-  </main>
+
+    
+
+   
 
   <footer class="py-4 mt-4">
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
       <div>
         <strong>Mobile Services</strong>
-        <div class="text-secondary small">123 Main St, Your City • +91 01234 567890 • support@example.com</div>
+        <div class="text-secondary small">30-15-129, basement floor, Rams Arcade, Main Rd, opp. bsnl office, Daba Gardens, Ram Nagar, Visakhapatnam, Andhra Pradesh 530020, India</div>
       </div>
       <div class="social d-flex gap-3 fs-5">
         <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
@@ -570,6 +883,20 @@
       });
     },{ threshold:0.4 });
     counters.forEach(c => observer.observe(c));
+  </script>
+  <script>
+    // Theme init & persistence
+    (function(){
+      const key = 'site-theme';
+      const apply = (t)=>{ document.documentElement.setAttribute('data-theme', t); const sel = document.getElementById('themeSwitcher'); if(sel) sel.value = t; };
+      const saved = localStorage.getItem(key) || 'light';
+      apply(saved);
+      window.addEventListener('DOMContentLoaded',()=>{
+        document.getElementById('themeSwitcher')?.addEventListener('change', (e)=>{
+          const t = e.target.value; localStorage.setItem(key, t); apply(t);
+        });
+      });
+    })();
   </script>
 </body>
 </html>

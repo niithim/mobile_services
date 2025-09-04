@@ -7,18 +7,81 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand-primary: #6a5acd;
+      --brand-accent: #22c55e;
+      --ink: #111827;
+      --paper: #ffffff;
+      --line: #e5e7eb;
+      --bg: #f3f4f6;
+    }
+    
+    body { 
+      background: var(--bg); 
+      color: var(--ink); 
+    }
+    
+    .brand-logo { 
+      height: 35px; 
+      width: auto; 
+      margin-right: 0.18rem; 
+      display: inline-block; 
+    }
+    
+    .contact-card { 
+      border: 1px solid var(--line); 
+      border-radius: 0.75rem; 
+      background: var(--paper); 
+    }
+    
+    .map-wrap { 
+      border: 1px solid var(--line); 
+      border-radius: 0.75rem; 
+      overflow: hidden; 
+    }
+    
+    .navbar, 
+    footer { 
+      background: var(--paper) !important; 
+      border-color: var(--line) !important; 
+    }
+    
+    .btn-dark { 
+      background-color: var(--brand-primary) !important; 
+      border-color: var(--brand-primary) !important; 
+    }
+    
+    .btn-dark:hover { 
+      filter: brightness(0.92); 
+    }
+    
+    .nav-link.active { 
+      color: var(--brand-primary) !important; 
+    }
+    
+    .form-control:focus,
+    .form-select:focus { 
+      border-color: var(--brand-primary); 
+      box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--brand-primary) 25%, transparent); 
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">Mobile Services</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks"><span class="navbar-toggler-icon"></span></button>
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img class="brand-logo" src="https://dummyimage.com/120x35/6a5acd/ffffff&text=Mobi+Fix" alt="Mobi Fix Logo">
+        <strong class="ms-1">Shiva's Mobi Fix</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="navLinks">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="repairs.html">Repairs</a></li>
-          <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
           <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
           <li class="nav-item"><a class="nav-link active" href="contact.html">Contact Us</a></li>
         </ul>
@@ -29,7 +92,7 @@
   <main class="container my-5">
     <div class="text-center mb-4" data-aos="fade-up">
       <h1 class="fw-bold mb-2">CONTACT US</h1>
-      <p class="text-secondary mb-0">We'd love to hear from you. Send us a message and we’ll get back to you shortly.</p>
+      <p class="text-secondary mb-0">We'd love to hear from you. Send us a message and we'll get back to you shortly.</p>
     </div>
 
     <div class="row g-4 align-items-stretch">
@@ -37,18 +100,19 @@
         <div class="h-100 w-100 border rounded overflow-hidden">
           <iframe title="Location Map" width="100%" height="460" style="border:0;" loading="lazy" allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.999727458374!2d2.292292615673696!3d48.858370079287166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc7f7f2c3fb%3A0x9b6f0f6b0b5a7!2sEiffel%20Tower!5e0!3m2!1sen!2sfr!4v1618320000000"></iframe>
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d243235.63368918243!2d83.30306200000001!3d17.718386!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39439baf681ab7%3A0xa73430f58f6c1f37!2sSiva%27s%20Mobifix!5e0!3m2!1ste!2sin!4v1756193414646!5m2!1ste!2sin">
+          </iframe>
         </div>
       </div>
       <div class="col-12 col-lg-6" data-aos="fade-left">
-        <div class="border rounded p-4 h-100">
+        <div class="contact-card p-4 h-100">
           <form id="contactForm" novalidate>
-            <!-- FormSubmit helpers -->
-            <input type="hidden" name="_subject" value="New Contact Submission - Mobile Services">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <!-- Optional redirect after submit: replace URL if desired -->
-            <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html"> -->
+            <input type="hidden" name="access_key" value="5ecf12f8-2d89-4468-821d-376a5b9d6fc7">
+            <input type="hidden" name="from_name" value="Shiva's Mobi Fix">
+            <input type="hidden" name="subject" value="New Contact Submission - Mobile Services">
+            <input type="hidden" name="replyto" value="email">
+            <input type="checkbox" name="botcheck" class="d-none" tabindex="-1" autocomplete="off">
+            
             <div class="mb-3">
               <input id="c_name" name="name" type="text" class="form-control form-control-lg" placeholder="Name" required>
               <div class="invalid-feedback">Please enter your name.</div>
@@ -64,9 +128,8 @@
               <textarea id="c_message" name="message" class="form-control form-control-lg" rows="6" placeholder="Message" required></textarea>
               <div class="invalid-feedback">Please enter a message.</div>
             </div>
-
+            <div class="mb-3 form-text text-secondary">By submitting this form, you agree to our <a href="#">privacy policy</a>.</div>
             <div id="contactStatus" class="alert d-none" role="alert" aria-live="polite"></div>
-
             <button id="contactSubmit" type="submit" class="btn btn-dark btn-lg w-100">
               <span class="contact-btn-text">Send Message</span>
             </button>
@@ -90,70 +153,92 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    // Initialize AOS animations
     AOS.init({ duration: 650, once: true });
+    
+    // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Contact form (Formspree)
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mdklnvkb';
+    // Contact form handling
     const contactForm = document.getElementById('contactForm');
     const contactStatus = document.getElementById('contactStatus');
     const contactSubmit = document.getElementById('contactSubmit');
     const contactBtnText = contactSubmit?.querySelector('.contact-btn-text');
+    const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 
-    function toggleAlert(el, message = '', type = 'info'){
+    function toggleAlert(el, message = '', type = 'info') {
+      if (!el) return;
       el.className = `alert alert-${type}`;
       el.textContent = message;
-      if(message){ el.classList.remove('d-none'); } else { el.classList.add('d-none'); }
+      el.classList.toggle('d-none', !message);
     }
 
-    function setContactLoading(loading){
-      if(!contactSubmit || !contactBtnText) return;
-      if(loading){
-        contactSubmit.disabled = true;
-        contactBtnText.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Sending...';
-      } else {
-        contactSubmit.disabled = false;
-        contactBtnText.textContent = 'Send Message';
-      }
+    function setContactLoading(loading) {
+      if (!contactSubmit || !contactBtnText) return;
+      contactSubmit.disabled = loading;
+      contactBtnText.innerHTML = loading 
+        ? '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Sending...' 
+        : 'Send Message';
     }
 
-    function validateContactForm(frm){
-      let valid = true;
-      Array.from(frm.elements).forEach(el => {
-        if(el.hasAttribute('required') && !String(el.value || '').trim()){
+    function validateForm(form) {
+      let isValid = true;
+      Array.from(form.elements).forEach(el => {
+        if (el.hasAttribute('required') && !String(el.value || '').trim()) {
           el.classList.add('is-invalid');
-          valid = false;
+          isValid = false;
         } else {
           el.classList.remove('is-invalid');
         }
       });
-      return valid;
+      return isValid;
     }
 
-    contactForm?.addEventListener('submit', async (e) => {
+    async function handleSubmit(e) {
       e.preventDefault();
       toggleAlert(contactStatus, '');
-      if(!validateContactForm(contactForm)) { toggleAlert(contactStatus, 'Please fill in all required fields correctly.', 'danger'); return; }
-      const fd = new FormData(contactForm);
-      const payload = Object.fromEntries(fd.entries());
-      try{
+      
+      if (!validateForm(contactForm)) {
+        toggleAlert(contactStatus, 'Please fill in all required fields correctly.', 'danger');
+        return;
+      }
+
+      const formData = new FormData(contactForm);
+      
+      try {
         setContactLoading(true);
-        const resp = await fetch(FORMSPREE_ENDPOINT, {
+        const response = await fetch(WEB3FORMS_ENDPOINT, {
           method: 'POST',
-          headers: { 'Accept':'application/json', 'Content-Type':'application/json' },
-          body: JSON.stringify(payload)
+          headers: { 'Accept': 'application/json' },
+          body: formData
         });
-        if(resp.ok){
-          toggleAlert(contactStatus, 'Message sent! We will reply to you soon.', 'success');
+
+        const result = await response.json().catch(() => ({}));
+        const isSuccess = response.ok && result.success !== false;
+
+        if (isSuccess) {
+          const successMsg = result?.message || 'Message sent! We will reply to you soon.';
+          toggleAlert(contactStatus, successMsg, 'success');
           contactForm.reset();
         } else {
-          toggleAlert(contactStatus, 'Failed to send message. Please try again later.', 'danger');
+          const apiMsg = result?.message || result?.error || 
+            (Array.isArray(result?.errors) ? result.errors.map(e => e.message || e).join(', ') : '');
+          const statusInfo = response.ok ? '' : ` (Status: ${response.status})`;
+          const errorMsg = apiMsg || 'Failed to send message. Please try again later.';
+          toggleAlert(contactStatus, `${errorMsg}${statusInfo}`, 'danger');
         }
-      } catch(err){
-        console.error(err);
+      } catch (error) {
+        console.error('Form submission error:', error);
         toggleAlert(contactStatus, 'Network error. Please check your connection and try again.', 'danger');
-      } finally { setContactLoading(false); }
-    });
+      } finally {
+        setContactLoading(false);
+      }
+    }
+
+    // Add event listener if form exists
+    if (contactForm) {
+      contactForm.addEventListener('submit', handleSubmit);
+    }
   </script>
 </body>
 </html>

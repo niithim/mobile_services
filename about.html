@@ -8,22 +8,82 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
-    .about-photo { border-radius: 1rem; object-fit: cover; height: 100%; min-height: 340px; width: 100%; }
-    .note-card { border: 1px solid rgba(0,0,0,.08); border-radius: .75rem; padding: .9rem; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.03); }
-    .note-card h6 { margin: 0 0 .25rem; font-weight: 700; }
-    .note-card p { margin: 0; color: #6c757d; }
-    .feature-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: .75rem; background: #f1f5ff; color: #0d6efd; }
-    .stats-band { background: linear-gradient(90deg, #0d6efd, #3a7bff); color: #fff; border-radius: 1rem; }
-    .stat h3 { margin: 0; font-weight: 800; }
-    .section-lead { max-width: 60ch; }
-    .mv-card { border: 1px solid rgba(0,0,0,.08); border-radius: .75rem; padding: 1rem; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.03); }
-    .mv-badge { font-size: .75rem; letter-spacing: .04em; }
+    :root {
+      --brand-primary: #6a5acd;
+      --brand-accent: #22c55e;
+      --ink: #111827;
+      --paper: #ffffff;
+      --line: #e5e7eb;
+      --bg: #f3f4f6;
+    }
+    
+    body { 
+      background: var(--bg); 
+      color: var(--ink);
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    
+    .navbar, footer {
+      background: var(--paper) !important;
+      border-color: var(--line) !important;
+    }
+    
+    .card, .note-card, .mv-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 0.75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    .btn-primary {
+      background-color: var(--brand-primary);
+      border-color: var(--brand-primary);
+    }
+    
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 0.75rem;
+      background: rgba(106, 90, 205, 0.1);
+      color: var(--brand-primary);
+    }
+    
+    .stats-band {
+      background: linear-gradient(90deg, var(--brand-primary), #8b75ff);
+      color: #fff;
+      border-radius: 1rem;
+      padding: 2rem;
+    }
+    
+    .about-photo {
+      border-radius: 1rem;
+      object-fit: cover;
+      height: 100%;
+      min-height: 300px;
+      width: 100%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    @media (max-width: 768px) {
+      .stats-band {
+        text-align: center;
+      }
+      
+      .about-photo {
+        margin-bottom: 2rem;
+      }
+    }
   </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navLinks">
   <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">Mobile Services</a>
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img class="brand-logo" src="https://dummyimage.com/120x35/6a5acd/ffffff&text=Mobi+Fix" alt="Mobi Fix Logo">
+        <strong class="ms-1">Shiva's Mobi Fix</strong>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,128 +92,156 @@
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="repairs.html">Repairs</a></li>
-          <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+          
           <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
         </ul>
+        <!-- Theme Switcher -->
+        <div class="ms-lg-3 mt-2 mt-lg-0">
+          <select id="themeSwitcher" class="form-select form-select-sm" aria-label="Select theme">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="blue">Blue</option>
+            <option value="emerald">Emerald</option>
+            <option value="sunset">Sunset</option>
+            <option value="contrast">High Contrast</option>
+          </select>
+        </div>
       </div>
     </div>
   </nav>
 
   <main class="container my-5">
-    <section class="mb-4" data-aos="fade-up">
-      <div class="card">
-        <div class="card-body">
-          <h1 class="h3 mb-2">About</h1>
-          <p class="text-secondary mb-0">We provide a suite of services from order management to post-purchase support. Our platform is optimized for mobile users with a focus on speed and accessibility.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Trust / Intro split -->
-    <section class="mb-5">
+    <!-- Founder Section -->
+    <section class="mb-5" data-aos="fade-up">
       <div class="row g-4 align-items-center">
         <div class="col-12 col-lg-6" data-aos="fade-right">
-          <img class="about-photo" src="https://images.unsplash.com/photo-1566728595333-75a1d7cae961?q=80&w=1600&auto=format&fit=crop" alt="Technician repairing phone on workbench">
+          <div class="position-relative">
+            <img class="about-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop" alt="Founder of Shiva's Mobi Fix">
+            <div class="position-absolute bottom-0 start-0 p-3 bg-white rounded-top-end shadow-sm">
+              <h3 class="h5 mb-0">Shiva Kumar</h3>
+              <p class="text-muted mb-0">Founder & Lead Technician</p>
+            </div>
+          </div>
         </div>
         <div class="col-12 col-lg-6" data-aos="fade-left">
-          <h2 class="h4 mb-3">Why customers trust us</h2>
-          <p class="text-secondary section-lead mb-4">From quick diagnostics to quality parts and friendly support, we make device repair simple, fast, and dependable.</p>
-          <div class="d-flex flex-column gap-3">
-            <div class="note-card">
-              <h6><i class="bi bi-shield-check me-2 text-primary"></i>Genuine Parts, Trusted Warranty</h6>
-              <p>Certified components and a solid warranty for peace of mind.</p>
+          <h1 class="display-5 fw-bold mb-3">Crafting Connections, One Device at a Time</h1>
+          <p class="lead text-secondary mb-4">
+            In a world where technology connects us all, I believe in the power of human touch. What started as a small repair kiosk has grown into a universe of solutions, all built on one simple principle: <strong>every device tells a story, and we're here to keep yours going</strong>.
+          </p>
+          <div class="d-flex gap-3 mb-4">
+            <div class="text-center">
+              <div class="h2 mb-0 fw-bold">10K+</div>
+              <div class="text-muted small">Devices Repaired</div>
             </div>
-            <div class="note-card">
-              <h6><i class="bi bi-lightning-charge me-2 text-warning"></i>Same‑day Turnaround</h6>
-              <p>Most common repairs completed within hours — no long waits.</p>
+            <div class="vr"></div>
+            <div class="text-center">
+              <div class="h2 mb-0 fw-bold">99.7%</div>
+              <div class="text-muted small">Success Rate</div>
             </div>
-            <div class="note-card">
-              <h6><i class="bi bi-people me-2 text-success"></i>Friendly, Expert Support</h6>
-              <p>Real people to help with pricing, diagnostics, and recommendations.</p>
+            <div class="vr"></div>
+            <div class="text-center">
+              <div class="h2 mb-0 fw-bold">4.9★</div>
+              <div class="text-muted small">Customer Rating</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Features grid -->
+    <!-- Vision Section -->
+    <section class="py-5 mb-5 bg-light rounded-3" data-aos="fade-up">
+      <div class="container px-4">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <h2 class="h3 mb-4">Our Universal Approach to Repair</h2>
+            <p class="lead">
+              At Shiva's Mobi Fix, we don't just repair devices—we restore connections. Every phone, tablet, or gadget that comes through our doors represents someone's lifeline to their world.
+            </p>
+            <p>
+              Our retail spaces are designed as universal hubs where technology meets humanity. Whether you're a student needing your notes, a business professional with critical data, or a grandparent wanting to see their grandkids, we understand what's really at stake.
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <div class="row g-3">
+              <div class="col-6">
+                <div class="p-4 bg-white rounded-3 h-100">
+                  <div class="feature-icon mb-3"><i class="bi bi-stars"></i></div>
+                  <h5>Unique Solutions</h5>
+                  <p class="text-muted small mb-0">Custom-tailored repairs that respect your device's unique needs and your personal requirements.</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="p-4 bg-white rounded-3 h-100">
+                  <div class="feature-icon mb-3"><i class="bi bi-shop-window"></i></div>
+                  <h5>Retail Excellence</h5>
+                  <p class="text-muted small mb-0">Beautiful, welcoming spaces where technology service meets modern retail experience.</p>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="p-4 bg-white rounded-3">
+                  <div class="feature-icon mb-3"><i class="bi bi-globe"></i></div>
+                  <h5>Universal Standards</h5>
+                  <p class="text-muted small mb-0">Consistently excellent service that transcends boundaries—same great experience, no matter which location you visit.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personal Note -->
     <section class="mb-5" data-aos="fade-up">
-      <div class="row g-3 row-cols-1 row-cols-md-3">
-        <div class="col">
-          <div class="d-flex gap-3 align-items-start p-3 border rounded-3 bg-white h-100">
-            <div class="feature-icon"><i class="bi bi-tools"></i></div>
+      <div class="card border-0 bg-primary text-white overflow-hidden">
+        <div class="row g-0">
+          <div class="col-lg-6 d-flex align-items-center p-4 p-lg-5">
             <div>
-              <h6 class="mb-1">Certified Technicians</h6>
-              <small class="text-secondary">Skilled pros with thousands of successful repairs.</small>
+              <h2 class="h3 mb-4">A Personal Note from Shiva</h2>
+              <blockquote class="mb-4">
+                <p class="lead fst-italic">"I started this journey with a single workbench and a vision to make technology repair more human. What keeps me going is seeing the relief on a customer's face when they get their device back—it's not just about fixing phones, it's about keeping people connected to what matters most."</p>
+              </blockquote>
+              <div class="d-flex align-items-center">
+                <div class="me-3">
+                  <i class="bi bi-envelope-fill me-2"></i> shiva@mobifix.com
+                </div>
+                <div>
+                  <i class="bi bi-telephone-fill me-2"></i> (555) 123-4567
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="d-flex gap-3 align-items-start p-3 border rounded-3 bg-white h-100">
-            <div class="feature-icon"><i class="bi bi-phone"></i></div>
-            <div>
-              <h6 class="mb-1">Multi‑Brand Support</h6>
-              <small class="text-secondary">Apple, Samsung, OnePlus, Xiaomi and more.</small>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="d-flex gap-3 align-items-start p-3 border rounded-3 bg-white h-100">
-            <div class="feature-icon"><i class="bi bi-cash-coin"></i></div>
-            <div>
-              <h6 class="mb-1">Clear, Upfront Pricing</h6>
-              <small class="text-secondary">No surprises — transparent quotes before we start.</small>
-            </div>
+          <div class="col-lg-6 d-none d-lg-block">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1200&auto=format&fit=crop" alt="Shiva at work" class="img-fluid h-100" style="object-fit: cover;">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Mission & Vision split -->
-    <section class="mb-5">
-      <div class="row g-4 align-items-center">
-        <div class="col-12 col-lg-6 order-2 order-lg-1" data-aos="fade-right">
-          <h2 class="h4 mb-3">Our Mission & Vision</h2>
-          <div class="row g-3">
-            <div class="col-12">
-              <div class="mv-card h-100">
-                <span class="badge bg-primary-subtle text-primary mv-badge mb-2">Mission</span>
-                <p class="mb-0 text-secondary">Deliver reliable, fast, and fair device repairs that extend the life of your tech and reduce e‑waste.</p>
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="mv-card h-100">
-                <span class="badge bg-success-subtle text-success mv-badge mb-2">Vision</span>
-                <p class="mb-0 text-secondary">Be the most trusted repair partner in every neighborhood, known for quality, transparency, and care.</p>
-              </div>
-            </div>
+    <!-- Core Values -->
+    <section class="mb-5" data-aos="fade-up">
+      <h2 class="h3 text-center mb-5">Our Universal Values</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 h-100 bg-white rounded-3 shadow-sm">
+            <div class="feature-icon mb-3"><i class="bi bi-heart-fill"></i></div>
+            <h4>Human-Centered</h4>
+            <p class="text-muted">We see the person behind every device, understanding that what we're really fixing are connections and memories.</p>
           </div>
         </div>
-        <div class="col-12 col-lg-6 order-1 order-lg-2" data-aos="fade-left">
-          <img class="about-photo" src="https://cyberttp.com/storage/2024/03/IT-Help-Desk-1.jpg" alt="Technician desk with phones and tools">
+        <div class="col-md-4">
+          <div class="p-4 h-100 bg-white rounded-3 shadow-sm">
+            <div class="feature-icon mb-3"><i class="bi bi-shield-check"></i></div>
+            <h4>Transparent</h4>
+            <p class="text-muted">No hidden fees, no jargon—just honest assessments and clear communication every step of the way.</p>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Stats band -->
-    <section class="stats-band p-4 p-md-5" data-aos="zoom-in">
-      <div class="row g-4 text-center">
-        <div class="col-6 col-md-3 stat">
-          <h3>10k+</h3>
-          <div class="opacity-75">Devices Repaired</div>
-        </div>
-        <div class="col-6 col-md-3 stat">
-          <h3>4.9★</h3>
-          <div class="opacity-75">Average Rating</div>
-        </div>
-        <div class="col-6 col-md-3 stat">
-          <h3>2 Hrs</h3>
-          <div class="opacity-75">Avg. Repair Time</div>
-        </div>
-        <div class="col-6 col-md-3 stat">
-          <h3>100%</h3>
-          <div class="opacity-75">Quality Check</div>
+        <div class="col-md-4">
+          <div class="p-4 h-100 bg-white rounded-3 shadow-sm">
+            <div class="feature-icon mb-3"><i class="bi bi-globe-americas"></i></div>
+            <h4>Sustainable</h4>
+            <p class="text-muted">We believe in extending device lifespans to reduce e-waste and our environmental footprint, one repair at a time.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -173,7 +261,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 650, once: true });
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+    
+    // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
